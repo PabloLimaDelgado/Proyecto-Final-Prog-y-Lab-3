@@ -1,4 +1,4 @@
-# Proyecto Final Prog y Lab 3
+# Proyecto Final Programación y Laboratorio 3
 
 Este repositorio contiene el proyecto final de  de programación y laboratorio 3 centrado en el desarrollo de una aplicacion front-end utilizando React. Este proyecto aplica conceptos avanzados de desarrollo de interfaz de usuario, gestión de estado y mejores prácticas del  ciclo de vida de componentes para proporcionar una arquitectura escalable y mantenible.
 
