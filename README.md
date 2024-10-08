@@ -13,7 +13,7 @@ Este repositorio contiene el proyecto final de  de programación y laboratorio 3
 - **Tecnologías Utilizadas**:
   - **React** como lenguaje de programación principal.
   - **React router-doom** para el manejo de las rutas de la aplicación.
-  - **Redux Tolkit** para el manejo de los estados delas entidades.
+  - **Redux Tolkit** para el manejo de los estados de las entidades.
   
 - **Funcionalidades Principales**:
   - Crear y gestionar empresas y sucursales con información relevante.
