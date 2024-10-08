@@ -1,34 +1,50 @@
-# Proyecto Final Programación y Laboratorio 3
+# React + TypeScript + Vite
 
-Este repositorio contiene el proyecto final de  de programación y laboratorio 3 centrado en el desarrollo de una aplicacion front-end utilizando React. Este proyecto aplica conceptos avanzados de desarrollo de interfaz de usuario, gestión de estado y mejores prácticas del  ciclo de vida de componentes para proporcionar una arquitectura escalable y mantenible.
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## Colaboradoresdel proyecto
+Currently, two official plugins are available:
 
-- Pablo Lima
-- Federico Cappelo
-- Julian Gonzalez Endzwieg
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Contenido del Proyecto
+## Expanding the ESLint configuration
 
-- **Tecnologías Utilizadas**:
-  - **React** como lenguaje de programación principal.
-  - **React router-doom** para el manejo de las rutas de la aplicación.
-  - **Redux Tolkit** para el manejo de los estados de las entidades.
-  
-- **Funcionalidades Principales**:
-  - Crear y gestionar empresas y sucursales con información relevante.
-  - Construir una carta de productos que incluye categorías y subcategorías, permitiendo una organización detallada.
-  - Implementar validaciones de formularios para asegurar la correcta entrada de datos y mejorar la experiencia del usuario.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-## Objetivo del Proyecto
+- Configure the top-level `parserOptions` property like this:
 
-El objetivo del proyecto es aplicar los principios y conceptos aprendidos a lo largo de la asignatura, poniendo en práctica el desarrollo de una aplicación funcional.
+```js
+export default tseslint.config({
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
 
-## Instrucciones de Instalación
+- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
+- Optionally add `...tseslint.configs.stylisticTypeChecked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
 
-Para clonar y ejecutar este proyecto en tu máquina local, sigue estos pasos:
+```js
+// eslint.config.js
+import react from 'eslint-plugin-react'
 
-1. Clona el repositorio:
-   
-   ```bash
-   git clone https://github.com/tu-usuario/proyecto-final-prog-lab-3.git
+export default tseslint.config({
+  // Set the react version
+  settings: { react: { version: '18.3' } },
+  plugins: {
+    // Add the react plugin
+    react,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended rules
+    ...react.configs.recommended.rules,
+    ...react.configs['jsx-runtime'].rules,
+  },
+})
+```
