@@ -33,3 +33,8 @@ Para clonar y ejecutar este proyecto en tu máquina local, sigue estos pasos:
    ```bash
    git clone https://github.com/tu-usuario/proyecto-final-prog-lab-3.git
 
+2. Link del maquetado del proyecyo
+
+ ```bash
+  https://www.figma.com/design/JjznpNBd0ZOlBkbHuvb7KQ/Proyecto-Final-Prog-3?node-id=0-1&t=xIkI3IqdFbozTVxk-1
+  
