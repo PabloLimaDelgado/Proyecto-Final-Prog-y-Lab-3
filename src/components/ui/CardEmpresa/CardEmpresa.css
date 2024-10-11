@@ -1,0 +1,85 @@
+.cardEmpresaContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: start;
+  background-color: #7d8c93;
+  border-right: 2px solid #1c1c1c;
+  gap: 0.4rem;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.cardEmpresaContainer::-webkit-scrollbar {
+  width: 12px;
+}
+
+.cardEmpresaContainer::-webkit-scrollbar-track {
+  background: transparent;
+  border-radius: 0.4rem;
+}
+
+.cardEmpresaContainer::-webkit-scrollbar-thumb {
+  background-color: #e0e0e0;
+  border-radius: 0.4rem;
+}
+
+.cardEmpresaContainer::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}
+
+.cardEmpresa {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  align-items: center;
+  justify-content: start;
+  border-radius: 0.4rem;
+  height: 10vh;
+  margin: 0.4rem;
+  padding: 0.4rem;
+  background-color: #e0e0e0;
+  box-shadow: 0px 0px 10px #e0e0e0;
+}
+
+.cardEmpresa h1 {
+  font-size: 1rem;
+  font-family: "Moulpali", sans-serif;
+}
+
+.cardEmpresa div {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.cardEmpresa div button {
+  display: flex;
+}
+
+.visibility {
+  background-color: transparent;
+  border: 2px solid #c49a6c;
+  border-radius: 0.4rem;
+  padding: 0.1rem;
+  color: #c49a6c;
+}
+
+.edit {
+  background-color: transparent;
+  border: 2px solid #2c3e4f;
+  border-radius: 0.4rem;
+  padding: 0.1rem;
+  color: #2c3e4f;
+}
+
+.location {
+  background-color: transparent;
+  border: 2px solid #556b56;
+  border-radius: 0.4rem;
+  padding: 0.1rem;
+  color: #556b56;
+}
