@@ -1,0 +1,12 @@
+.pageEmpresaContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh; 
+}
+
+.pageEmpresaSucursal{
+  overflow-y: auto; 
+  display: flex;
+  flex-direction: row;
+}

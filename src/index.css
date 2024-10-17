@@ -12,7 +12,36 @@ html {
 body div {
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: 0.3fr 1fr;
+}
+
+.visibility {
+  background-color: transparent;
+  border: 2px solid #c49a6c;
+  border-radius: 0.4rem;
+  padding: 0.1rem;
+  color: #c49a6c;
+}
+
+.edit {
+  background-color: transparent;
+  border: 2px solid #2c3e4f;
+  border-radius: 0.4rem;
+  padding: 0.1rem;
+  color: #2c3e4f;
+}
+
+.location {
+  background-color: transparent;
+  border: 2px solid #556b56;
+  border-radius: 0.4rem;
+  padding: 0.1rem;
+  color: #556b56;
+}
+
+.delete {
+  background-color: transparent;
+  border: 2px solid #a75d5d;
+  border-radius: 0.4rem;
+  padding: 0.1rem;
+  color: #a75d5d;
 }

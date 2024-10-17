@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(
+      rgba(125, 140, 147, 0.9),
+      rgba(125, 140, 147, 0.9)
+    ),
+    url("/src/assets/fondoHeaderEmpresa.jpeg");
+  background-size: contain;
+  border-bottom: 0.1rem solid #1c1c1c;
+  height: 15vh;
+}
+
+.header h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  color: #e0e0e0;
+  margin: 1rem;
+  font-size: 2.5rem;
+}

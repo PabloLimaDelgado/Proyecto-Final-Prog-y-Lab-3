@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./CardSucursal.css";
 import { useShow } from "../../../hooks/useShow.ts";
+import { useNavigate } from "react-router-dom";
 
 interface ISUCURSAL {
   nombre: string;
@@ -38,20 +39,20 @@ export const CardSucursal = () => {
       "https://i.pinimg.com/564x/d3/b9/6b/d3b96b5244bdfa0001a95168686e469a.jpg",
   };
 
-  const { showCard, handleMouseEnter, handleMouseLeave } = useShow();
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("/vistaMenu");
+  };
 
   return (
-    <div className="cartaContainer">
-      <div
-        className="carta"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
-        <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
-        <img src={sucursalEjemplo.imagen} alt="" />
-
-        {showCard && (
+    <div className="cardSucursalSide">
+      <h1>Sucursales en: {sucursalEjemplo.nombreEmpresa}</h1>
+      <div className="cartaSucursalContainer">
+        <div className="cartaSucursal" onClick={handleNavigate}>
+          <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
+          <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
+          <img src={sucursalEjemplo.imagen} alt="" />
           <div>
             <button className="location">
               <span className="material-symbols-outlined">location_city</span>
@@ -63,19 +64,12 @@ export const CardSucursal = () => {
               <span className="material-symbols-outlined">visibility</span>
             </button>
           </div>
-        )}
-      </div>
+        </div>
 
-      <div
-        className="carta"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
-        <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
-        <img src={sucursalEjemplo.imagen} alt="" />
-
-        {showCard && (
+        <div className="cartaSucursal" onClick={handleNavigate}>
+          <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
+          <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
+          <img src={sucursalEjemplo.imagen} alt="" />
           <div>
             <button className="location">
               <span className="material-symbols-outlined">location_city</span>
@@ -87,19 +81,12 @@ export const CardSucursal = () => {
               <span className="material-symbols-outlined">visibility</span>
             </button>
           </div>
-        )}
-      </div>
+        </div>
 
-      <div
-        className="carta"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
-        <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
-        <img src={sucursalEjemplo.imagen} alt="" />
-
-        {showCard && (
+        <div className="cartaSucursal" onClick={handleNavigate}>
+          <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
+          <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
+          <img src={sucursalEjemplo.imagen} alt="" />
           <div>
             <button className="location">
               <span className="material-symbols-outlined">location_city</span>
@@ -111,127 +98,14 @@ export const CardSucursal = () => {
               <span className="material-symbols-outlined">visibility</span>
             </button>
           </div>
-        )}
-      </div>
+        </div>
 
-      <div
-        className="carta"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
-        <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
-        <img src={sucursalEjemplo.imagen} alt="" />
-
-        {showCard && (
-          <div>
-            <button className="location">
-              <span className="material-symbols-outlined">location_city</span>
-            </button>
-            <button className="edit">
-              <span className="material-symbols-outlined">edit</span>
-            </button>
-            <button className="visibility">
-              <span className="material-symbols-outlined">visibility</span>
-            </button>
-          </div>
-        )}
-      </div>
-
-      <div
-        className="carta"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
-        <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
-        <img src={sucursalEjemplo.imagen} alt="" />
-
-        {showCard && (
-          <div>
-            <button className="location">
-              <span className="material-symbols-outlined">location_city</span>
-            </button>
-            <button className="edit">
-              <span className="material-symbols-outlined">edit</span>
-            </button>
-            <button className="visibility">
-              <span className="material-symbols-outlined">visibility</span>
-            </button>
-          </div>
-        )}
-      </div>
-
-      <div
-        className="carta"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
-        <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
-        <img src={sucursalEjemplo.imagen} alt="" />
-
-        {showCard && (
-          <div>
-            <button className="location">
-              <span className="material-symbols-outlined">location_city</span>
-            </button>
-            <button className="edit">
-              <span className="material-symbols-outlined">edit</span>
-            </button>
-            <button className="visibility">
-              <span className="material-symbols-outlined">visibility</span>
-            </button>
-          </div>
-        )}
-      </div>
-
-      <div
-        className="carta"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
-        <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
-        <img src={sucursalEjemplo.imagen} alt="" />
-
-        {showCard && (
-          <div>
-            <button className="location">
-              <span className="material-symbols-outlined">location_city</span>
-            </button>
-            <button className="edit">
-              <span className="material-symbols-outlined">edit</span>
-            </button>
-            <button className="visibility">
-              <span className="material-symbols-outlined">visibility</span>
-            </button>
-          </div>
-        )}
-      </div>
-
-      <div
-        className="carta"
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-      >
-        <h1>{`${sucursalEjemplo.nombreEmpresa} - ${sucursalEjemplo.nombre}`}</h1>
-        <p>{`Apertura ${sucursalEjemplo.horarioApertura} - ${sucursalEjemplo.horarioCierra}`}</p>
-        <img src={sucursalEjemplo.imagen} alt="" />
-
-        {showCard && (
-          <div>
-            <button className="location">
-              <span className="material-symbols-outlined">location_city</span>
-            </button>
-            <button className="edit">
-              <span className="material-symbols-outlined">edit</span>
-            </button>
-            <button className="visibility">
-              <span className="material-symbols-outlined">visibility</span>
-            </button>
-          </div>
-        )}
+        <div className="cardSucursalButton">
+          <button>
+            <h2>Agregar sucursal</h2>
+            <span className="material-symbols-outlined">add</span>
+          </button>
+        </div>
       </div>
     </div>
   );

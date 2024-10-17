@@ -1,0 +1,58 @@
+.menuContainer {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  border-right: 0.1rem solid #1c1c1c;
+  background: rgba(125, 140, 147, 0.9);
+}
+
+.menuContainer ul {
+  margin: 0.4rem;
+  list-style: none;
+}
+
+.menuContainer ul li {
+  margin: 1rem;
+}
+
+.menuContainer ul li button {
+  background-color: transparent;
+  border-radius: 0.4rem;
+  border: solid 1px #e0e0e0;
+  padding: 0.4rem;
+  width: 12vw;
+}
+
+.Categorias {
+  background: linear-gradient(
+      rgba(125, 140, 147, 0.9),
+      rgba(125, 140, 147, 0.9)
+    ),
+    url("/src/assets/fondoMenuCategorias.png");
+  background-size: contain;
+}
+
+.Productos {
+  background: linear-gradient(
+      rgba(125, 140, 147, 0.9),
+      rgba(125, 140, 147, 0.9)
+    ),
+    url("/src/assets/fondoMenuProductos.png");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.Alergenos {
+  background: linear-gradient(
+      rgba(125, 140, 147, 0.9),
+      rgba(125, 140, 147, 0.9)
+    ),
+    url("/src/assets/fondoMenuAlergenos.png");
+  background-size: contain;
+}
+
+.buttonSeleccionado {
+  background-color: #e0e0e0 !important;
+}
