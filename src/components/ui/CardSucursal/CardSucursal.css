@@ -1,0 +1,70 @@
+.cartaSucursal {
+  display: flex;
+  width: 18vw;
+  height: 40vh;
+  flex-direction: column;
+  border: 1px solid #1c1c1c;
+  margin: 0.4rem;
+  align-items: center;
+  background-color: #e0e0e0;
+  box-shadow: inset 0px 0px 10px #1c1c1c;
+  border-radius: 5px;
+  justify-self: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.cartaSucursal h1 {
+  font-size: 1rem;
+  color: #1c1c1c;
+  margin: 0.4rem;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.cartaSucursal p {
+  color: #1c1c1c;
+  margin: 0.4rem;
+  font-family: "Moulpali", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.cartaSucursal img {
+  width: 60%;
+  height: 25vh;
+  position: relative;
+  border: 1px solid #1c1c1c;
+  border-radius: 0.4rem;
+}
+
+.buttonsSucursales {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -300px;
+  left: 50%;
+  transform: translate(-52.5%, 0%);
+  transition: all 0.8s ease;
+  background-color: rgba(125, 140, 147, 1);
+  padding: 1rem;
+  border-radius: 5px;
+  visibility: hidden;
+  gap: 0.4rem;
+}
+
+.cartaSucursal:hover .buttonsSucursales {
+  top: -2%;
+  visibility: visible;
+}
+
+.buttonsSucursales button {
+  width: 3vw;
+  height: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

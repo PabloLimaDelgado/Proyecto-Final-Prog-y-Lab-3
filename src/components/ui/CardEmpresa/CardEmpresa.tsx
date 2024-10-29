@@ -1,81 +1,76 @@
+import { FC, useState } from "react";
+import { IEmpresa } from "../../../types/dtos/empresa/IEmpresa.ts";
 import "./CardEmpresa.css";
+import { VerEmpresa } from "../forms/VerEmpresa/VerEmpresa.tsx";
+import { ModificarEmpresa } from "../forms/ModificarEmpresa/ModificarEmpresa.tsx";
+import { useAppSelector } from "../../../hooks/redux.ts";
 
-export const CardEmpresa = () => {
+interface ICardEmpresa {
+  empresa: IEmpresa;
+}
+
+export const CardEmpresa: FC<ICardEmpresa> = ({ empresa }) => {
+  const [empresaView, setEmpresaView] = useState<boolean>(false);
+  const [modificarEmpresa, setModificarEmpresa] = useState<boolean>(false);
+
+  const handleEmpresaView = () => {
+    setEmpresaView(!empresaView);
+  };
+
+  const handleModificarEmpresa = () => {
+    setModificarEmpresa(!modificarEmpresa);
+  };
+
+  const empresaSeleccionada = useAppSelector((state) =>
+    state.empresaReducer.empresa.find((e) => e.id === empresa.id)
+  );
+
   return (
-    <div className="cardEmpresaSide">
-      <h1>Empresas</h1>
-      <div className="cardEmpresaContainer">
-        <div className="cardEmpresa">
-          <h2>Bendito Rufian</h2>
-          <img
-            src="https://i.pinimg.com/enabled_lo/564x/7f/32/83/7f3283c5833146ebb7c87b2996843586.jpg"
-            alt=""
-          />
-          <div>
-            <button className="edit">
-              <span className="material-symbols-outlined">edit</span>
-            </button>
-            <button className="visibility">
-              <span className="material-symbols-outlined">visibility</span>
-            </button>
-          </div>
+    <>
+      <div
+        className="cardEmpresa"
+        style={{
+          background: ` linear-gradient(
+          rgba(125, 140, 147, 0.9),
+          rgba(125, 140, 147, 0.9)
+          ),url(${empresaSeleccionada?.logo})`,
+        }}
+      >
+        <div className="cardEmpresaTituloImg">
+          <h2>Sucursales en: {empresaSeleccionada?.nombre}</h2>
         </div>
-
-        <div className="cardEmpresa">
-          <h2>Bendito Rufian</h2>
-          <img
-            src="https://i.pinimg.com/enabled_lo/564x/7f/32/83/7f3283c5833146ebb7c87b2996843586.jpg"
-            alt=""
-          />
-          <div>
-            <button className="edit">
-              <span className="material-symbols-outlined">edit</span>
-            </button>
-            <button className="visibility">
-              <span className="material-symbols-outlined">visibility</span>
-            </button>
-          </div>
-        </div>
-
-        <div className="cardEmpresa">
-          <h2>Bendito Rufian</h2>
-          <img
-            src="https://i.pinimg.com/enabled_lo/564x/7f/32/83/7f3283c5833146ebb7c87b2996843586.jpg"
-            alt=""
-          />
-          <div>
-            <button className="edit">
-              <span className="material-symbols-outlined">edit</span>
-            </button>
-            <button className="visibility">
-              <span className="material-symbols-outlined">visibility</span>
-            </button>
-          </div>
-        </div>
-
-        <div className="cardEmpresa">
-          <h2>Bendito Rufian</h2>
-          <img
-            src="https://i.pinimg.com/enabled_lo/564x/7f/32/83/7f3283c5833146ebb7c87b2996843586.jpg"
-            alt=""
-          />
-          <div>
-            <button className="edit">
-              <span className="material-symbols-outlined">edit</span>
-            </button>
-            <button className="visibility">
-              <span className="material-symbols-outlined">visibility</span>
-            </button>
-          </div>
-        </div>
-        
-        <div className="cardEmpresaButton">
-          <button>
-            <h2>Agregar Empresa</h2>
-            <span className="material-symbols-outlined">add</span>
+        <div className="buttonsEmpresa">
+          <button className="edit">
+            <span
+              className="material-symbols-outlined"
+              onClick={handleModificarEmpresa}
+            >
+              edit
+            </span>
+          </button>
+          <button className="visibility">
+            <span
+              className="material-symbols-outlined"
+              onClick={handleEmpresaView}
+            >
+              visibility
+            </span>
           </button>
         </div>
       </div>
-    </div>
+
+      {empresaView && (
+        <VerEmpresa
+          empresa={empresaSeleccionada ? empresaSeleccionada : empresa}
+          handleEmpresaVIew={handleEmpresaView}
+        />
+      )}
+      {modificarEmpresa && (
+        <ModificarEmpresa
+          handleModificarEmpresa={handleModificarEmpresa}
+          initialForm={empresaSeleccionada ? empresaSeleccionada : empresa}
+        />
+      )}
+    </>
   );
 };

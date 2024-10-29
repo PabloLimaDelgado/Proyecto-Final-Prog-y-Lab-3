@@ -1,0 +1,161 @@
+.modalSucursal {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(28, 28, 28, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.modalSucursal form {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e0e0e0;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  height: 75%;
+  border: 2px solid #1c1c1c;
+  box-shadow: 0px 0px 10px 0px #e0e0e0;
+}
+
+.modalSucursal form h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+.modalSucursal form input {
+  margin: 0.4rem;
+  border-radius: 1px solid #1c1c1c;
+  border-radius: 0.4rem;
+  height: 20vh;
+  padding: 0.4rem;
+  width: 100%;
+  font-family: "Moulpali", sans-serif;
+}
+
+.modalSucursal form input::placeholder {
+  padding: 0.4rem;
+  color: rgba(28, 28, 28, 0.8);
+  font-family: "Moulpali", sans-serif;
+}
+
+.modalSucursal input {
+  background-color: #e0e0e0;
+  outline: none;
+  border: 1px solid #1c1c1c;
+}
+
+.divInputs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.divInputs div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem;
+}
+
+.divInputs div input {
+  width: 100%;
+  height: 10%;
+}
+
+.divInputs select {
+  width: 100%;
+  height: 10%;
+  border: 1px solid #1c1c1c;
+  border-radius: 0.4rem;
+  background-color: transparent;
+  margin: 0.4rem;
+  color: rgba(28, 28, 28, 0.8);
+}
+
+.divInputs select option {
+  color: #1c1c1c;
+}
+
+.divHabilitado {
+  display: flex !important;
+  width: 50% !important;
+  height: 20% !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.divHabilitado label {
+  display: flex !important;
+  background-color: #e0e0e0 !important;
+  border: 1px solid #c49a6c !important;
+  border-radius: 0.4rem !important;
+  color: #c49a6c !important;
+}
+
+.divHabilitado input[type="checkbox"] {
+  opacity: 0 !important;
+}
+
+.divHabilitado input[type="checkbox"]:checked + label {
+  background-color: #c49a6c !important;
+  color: #e0e0e0 !important;
+}
+
+.divHabilitado p {
+  margin: 0 !important;
+  color: rgba(28, 28, 28, 0.8) !important;
+  white-space: nowrap !important;
+}
+
+.divImagen {
+  width: 31% !important;
+  height: 8% !important;
+  position: absolute !important;
+  top: 70%;
+}
+
+.divImagen::placeholder {
+  text-align: center !important;
+}
+
+.divButtonsSucursal {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+ 
+.buttonVerdeSucursalCrear {
+  border: 1px solid #7a9970;
+  font-family: "Roboto", sans-serif;
+  padding: 0.4rem;
+  margin: 0.4rem;
+  color: #7a9970;
+  background-color: transparent;
+  width: 20%;
+  border-radius: 0.4rem;
+}
+
+.buttonRojoSucursalCrear {
+  border: 1px solid #a75d5d;
+  font-family: "Roboto", sans-serif;
+  padding: 0.4rem;
+  margin: 0.4rem;
+  color: #a75d5d;
+  background-color: transparent;
+  width: 20%;
+  border-radius: 0.4rem;
+}

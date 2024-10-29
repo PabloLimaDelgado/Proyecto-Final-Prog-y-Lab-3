@@ -1,9 +1,63 @@
-.menuEmpresa{
-padding-top: 2%;
- width: 20%;
- display: flex;
- align-items: center;
- flex-direction: column;
- justify-content: flex-start;
+.menuEmpresa {
+  padding-top: 2%;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: linear-gradient(
+    rgba(125, 140, 147, 1) 30%,
+    rgba(224, 224, 224, 1) 80%
+  );
+  border-right: #1c1c1c 2px solid;
+}
 
+.empresaScrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.empresaScrollbar::-webkit-scrollbar-track {
+  background: #e0e0e0;
+  border-radius: 0.4rem;
+  border: 1px solid #1c1c1c;
+}
+
+.empresaScrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(125, 140, 147, 1);
+  border-radius: 0.4rem;
+  border: 1px solid #1c1c1c;
+}
+
+.empresaScrollbar::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}
+
+.cardEmpresaSucursales {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  background: rgba(125, 140, 147, 1);
+
+  overflow-y: scroll;
+}
+
+.cardEmpresaSucursales::-webkit-scrollbar {
+  width: 12px;
+}
+
+.cardEmpresaSucursales::-webkit-scrollbar-track {
+  background: rgba(125, 140, 147, 1);
+  border-radius: 0.4rem;
+  border: 1px solid #1c1c1c;
+}
+
+.cardEmpresaSucursales::-webkit-scrollbar-thumb {
+  background-color: #e0e0e0;
+  border-radius: 0.4rem;
+  border: 1px solid #1c1c1c;
+}
+
+.cardEmpresaSucursales::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
 }

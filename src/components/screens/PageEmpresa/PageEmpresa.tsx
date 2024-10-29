@@ -1,27 +1,16 @@
 import { Header } from "../../ui/Header/Header.tsx";
-// import { CardEmpresa } from "../../ui/CardEmpresa/CardEmpresa.tsx";
-import {  PageSucursal } from "../../ui/PageSucursal/PageSucursal.tsx";
 import "./PageEmpresa.css";
 import { MenuEmpresa } from "../../ui/MenuEmpresa/MenuEmpresa.tsx";
-// import { CardEmpresa } from "../../ui/CardEmpresa/CardEmpresa.tsx";
 
-export const PageEmpresa = async () => {
-  const data = await fetch("http://190.221.207.224:8090/empresas");
-  const response = await data.json();
 
-  const handleLog = async () => {
-    console.log(response);
-  };
 
-  handleLog();
 
+export const PageEmpresa = () => {
   return (
     <div className="pageEmpresaContainer">
       <Header nombreVista="Vista empresas" />
       <div className="pageEmpresaSucursal">
-        {/* <CardEmpresa /> */}
-        <MenuEmpresa/>
-        <PageSucursal />
+        <MenuEmpresa />
       </div>
     </div>
   );

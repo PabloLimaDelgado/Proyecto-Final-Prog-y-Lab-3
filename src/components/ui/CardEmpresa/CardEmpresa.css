@@ -1,23 +1,25 @@
-.cardEmpresaSide {
-  width: 50%;
+.cardEmpresa {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(
-    rgba(125, 140, 147, 1) 30%,
-    rgba(224, 224, 224, 1) 80%
-  );
-  border-right: #1c1c1c 2px solid;
-  gap: 1rem;
-  overflow-y: auto;
+  width: 100%;
+  height: auto !important;
+  padding-bottom: 5vh;
+  padding-top: 5vh;
+  justify-content: space-around;
+  border-bottom: #1c1c1c 2px solid;
+  background-repeat: repeat-x !important;
+  background-position: center center !important;
+  background-size: contain !important;
+}
+.cardEmpresaTituloImg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
 }
 
-.cardEmpresaContainer {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-}
-
-.cardEmpresaSide h1 {
+.cardEmpresaTituloImg h2 {
   font-family: "Montserrat", sans-serif;
   font-weight: 200;
   color: #1c1c1c;
@@ -25,43 +27,14 @@
   font-size: 2rem;
 }
 
-.cardEmpresa {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 1px solid #1c1c1c;
-  padding: 0.4rem;
-  border-radius: 0.4rem;
-  box-shadow: inset 0px 0px 10px #1c1c1c;
-  background-color: #e0e0e0;
-  height: 40vh;
-  width: 15vw;
-  margin: 0.4rem;
-  justify-self: center;
-}
-
-.cardEmpresa img {
-  width: 70%;
-  height: 60%;
-  border: #1c1c1c 1px solid;
-  border-radius: 0.4rem;
-  margin: 1rem;
-}
-
-.cardEmpresa div {
+.buttonsEmpresa {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.4rem;
 }
 
-.cardEmpresa h2 {
-  font-family: "Roboto", sans-serif;
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-
-.cardEmpresa div button {
+.buttonsEmpresa button {
   display: flex;
 }
 

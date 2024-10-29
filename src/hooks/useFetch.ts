@@ -1,13 +1,43 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
-export const useFetch = async () => {
-  const data = await fetch("http://190.221.207.224:8090/empresas");
-  const response = await data.json();
+interface FetchState<T> {
+  data: T | null;
+  isLoading: boolean;
+  errors: Error | null;
+}
 
-  const handleLog = async () => {
-    console.log(response);
+export const useFetch = <T>(url: RequestInfo) => {
+  const [fetchDB, setFetchDB] = useState<FetchState<T>>({
+    data: null,
+    isLoading: true,
+    errors: null,
+  });
+
+  const { data, isLoading, errors } = fetchDB;
+
+  const getFetch = async () => {
+    try {
+      const response: Response = await fetch(url);
+      const data: T = await response.json();
+
+      setFetchDB({
+        data,
+        isLoading: false,
+        errors: null,
+      });
+    } catch (error) {
+      setFetchDB({
+        data: null,
+        isLoading: false,
+        errors: error as Error,
+      });
+    }
   };
-  return {
-    handleLog
-  };
+
+  useEffect(() => {
+    if (!url) return;
+    getFetch();
+  }, [url]);
+
+  return { data, isLoading, errors };
 };

@@ -1,0 +1,93 @@
+.verEmpresaContainer {
+  z-index: 2;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(28, 28, 28, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.verEmpresa {
+  background-color: #e0e0e0;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 22vw;
+  height: 70vh;
+  gap: 0.4rem;
+  border: 2px solid #1c1c1c;
+  box-shadow: 0px 0px 10px 0px #e0e0e0;
+}
+
+.verEmpresa h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 1.5rem;
+  color: #1c1c1c;
+}
+
+.verEmpresa div {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  padding: 0.4rem;
+  padding-left: 1.5rem;
+}
+
+.verEmpresa div p {
+  color: #1c1c1c;
+  font-family: "Moulpali", sans-serif;
+}
+
+.verEmpresa div p span {
+  font-weight: bold;
+  color: #1c1c1c;
+}
+
+.divImagenEmpresa {
+  flex-direction: row !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-items: center !important;
+  gap: 3rem !important;
+}
+
+.divImagenEmpresa img {
+  width: 12vw;
+  height: 12vw;
+  border: 1px solid #1c1c1c;
+  border-radius: 0.4rem;
+}
+
+.divImagenEmpresa img:hover {
+  background-color: #1c1c1c;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 22vw;
+  height: 70vh;
+}
+
+.divImagenEmpresa span {
+  font-family: "Roboto", sans-serif;
+  font-weight: bold;
+  color: #1c1c1c;
+}
+
+.buttonVerde {
+  border: 1px solid #7a9970;
+  font-family: "Roboto", sans-serif;
+  padding: 0.4rem;
+  margin: 0.4rem;
+  color: #7a9970;
+  background-color: transparent;
+  width: 40%;
+  border-radius: 0.4rem;
+}

@@ -1,15 +1,10 @@
 .cardSucursalSide {
-  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: linear-gradient(
-    rgba(224, 224, 224, 1) 30%,
-    rgba(125, 140, 147, 1) 80%
-  );
-  border-right: #1c1c1c 2px solid;
   gap: 1rem;
-  overflow-y: auto;
+  background-color: rgba(125, 140, 147, 0.9);
+  height: auto !important;
 }
 
 .cardSucursalSide h1 {
@@ -22,7 +17,7 @@
 
 .cartaSucursalContainer {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 
 .cartaSucursal {
@@ -33,7 +28,7 @@
   border: 1px solid #1c1c1c;
   margin: 0.4rem;
   align-items: center;
-  background-color: #7d8c93;
+  background-color: #e0e0e0;
   box-shadow: inset 0px 0px 10px #1c1c1c;
   border-radius: 5px;
   justify-self: center;
@@ -113,24 +108,4 @@
   justify-content: center;
   border: none;
   flex-direction: column;
-}
-
-.cardSucursalSide::-webkit-scrollbar {
-  width: 12px;
-}
-
-.cardSucursalSide::-webkit-scrollbar-track {
-  background: rgba(125, 140, 147, 1);
-  border-radius: 0.4rem;
-  border: 1px solid #1c1c1c;
-}
-
-.cardSucursalSide::-webkit-scrollbar-thumb {
-  background-color: #e0e0e0;
-  border-radius: 0.4rem;
-  border: 1px solid #1c1c1c;
-}
-
-.cardSucursalSide::-webkit-scrollbar-thumb:hover {
-  cursor: pointer;
 }
