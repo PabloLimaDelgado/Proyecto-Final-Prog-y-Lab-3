@@ -45,7 +45,7 @@ export const ModificarEmpresa = ({
   return (
     <div className="modalEmpresa">
       <form onSubmit={onSubmit}>
-        <h1>Crear Empresa</h1>
+        <h1>Modificar Empresa</h1>
         <input
           type="text"
           placeholder="Ingrese un nombre"

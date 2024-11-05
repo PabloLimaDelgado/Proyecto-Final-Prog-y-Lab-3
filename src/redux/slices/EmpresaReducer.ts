@@ -4,10 +4,13 @@ import { ISucursal } from "../../types/dtos/sucursal/ISucursal.ts";
 
 interface InitialState {
   empresa: IEmpresa[];
+  empresaEnviada:IEmpresa | null;
 }
 
 const initialState: InitialState = {
   empresa: [],
+  empresaEnviada:null
+
 };
 
 const EmpresaReducer = createSlice({
@@ -71,6 +74,10 @@ const EmpresaReducer = createSlice({
         }
       }
     },
+    setEmpresaEnviada(state, action: PayloadAction<{empresa : IEmpresa | null}>){
+      
+      state.empresaEnviada = action.payload.empresa ||null
+    }
   },
 });
 
@@ -80,5 +87,6 @@ export const {
   setCrearEmpresa,
   setAgregarSucursales,
   setModificarSucursal,
+  setEmpresaEnviada,
 } = EmpresaReducer.actions;
 export default EmpresaReducer.reducer;

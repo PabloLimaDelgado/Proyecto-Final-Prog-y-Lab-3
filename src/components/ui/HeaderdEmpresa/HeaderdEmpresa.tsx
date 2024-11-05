@@ -9,7 +9,7 @@ interface ICardEmpresa {
   empresa: IEmpresa;
 }
 
-export const HeaderdEmpresa: FC<ICardEmpresa> = ({ empresa=null }) => {
+export const HeaderdEmpresa: FC<ICardEmpresa> = ({ empresa= null}) => {
   const [empresaView, setEmpresaView] = useState<boolean>(false);
   const [modificarEmpresa, setModificarEmpresa] = useState<boolean>(false);
 

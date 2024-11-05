@@ -59,6 +59,7 @@ export const CrearEmpresa = ({
         ...data,
         sucursales: [],
       };
+
       dispatch(setCrearEmpresa(newEmpresa));
       handleCrearEmpresa();
     } catch (error) {

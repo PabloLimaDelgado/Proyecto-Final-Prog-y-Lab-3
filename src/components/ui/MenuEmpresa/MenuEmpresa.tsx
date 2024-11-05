@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { useFetch } from "../../../hooks/useFetch.ts";
 import { IEmpresa } from "../../../types/dtos/empresa/IEmpresa.ts";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux.ts";
-import { setEmpresas } from "../../../redux/slices/EmpresaReducer.ts";
+import { setEmpresas, setEmpresaEnviada } from "../../../redux/slices/EmpresaReducer.ts";
 import { HeaderdEmpresa } from "../HeaderdEmpresa/HeaderdEmpresa.tsx";
 import { ICreateEmpresaDto } from "../../../types/dtos/empresa/ICreateEmpresaDto.ts";
 import { PageSucursal } from "../PageSucursal/PageSucursal.tsx";
@@ -15,13 +15,12 @@ import { PageEmpresa } from "../PageEmpresa/PageEmpresa.tsx";
 
 export const MenuEmpresa = () => {
   const [showBusinees, setShowBusinnes] = useState<boolean>(false);
-  const [empresaSeleccionada, setEmpresaSeleccionada] =
-    useState<boolean>(false);
-  const [empresaEnviada, setEmpresaEnviada] = useState<IEmpresa | null>(null);
-  const [crearEmpresa, setCrearEmpresa] = useState<boolean>(false);
 
+  const [crearEmpresa, setCrearEmpresa] = useState<boolean>(false);
+  const API = "http://190.221.207.224:8090";
   const dispatch = useAppDispatch();
-  const { data } = useFetch<IEmpresa[]>("http://190.221.207.224:8090/empresas");
+  const empresaEnviada = useAppSelector((state )=> state.empresaReducer.empresaEnviada)
+  const { data } = useFetch<IEmpresa[]>(`${API}/empresas`);
 
   useEffect(() => {
     const fetchEmpresasConSucursales = async () => {
@@ -47,7 +46,7 @@ export const MenuEmpresa = () => {
   ): Promise<ISucursal[]> => {
     try {
       const response = await fetch(
-        `http://190.221.207.224:8090/sucursales/porEmpresa/${empresaId}`
+        `${API}/sucursales/porEmpresa/${empresaId}`
       );
 
       if (!response.ok) {
@@ -102,7 +101,28 @@ export const MenuEmpresa = () => {
             className={`d-flex flex-column w-100 gap-3 mt-4 align-items-center empresaScrollbar ${styles.empresaScrollbar}`}
             style={{ height: "auto", overflowX: "hidden" }}
           >
-            {empresas.map((empresa) => (
+             <Button
+              variant="light"
+              className="d-flex  align-items-center justify-content-center "
+              style={{ width: "80%", maxWidth: "300px" }}
+              onClick={() => {
+                // setEmpresaEnviada(null);
+                // setEmpresaSeleccionada(false);
+                dispatch(setEmpresaEnviada({empresa: null}));
+              }}
+            >
+              Ver Empresas
+            </Button>
+            <Button
+              variant="light"
+              className="d-flex  align-items-center justify-content-center "
+              style={{ width: "80%", maxWidth: "300px" }}
+              onClick={handleCrearEmpresa}
+            >
+              Agregar Empresa
+            </Button>
+            {
+            empresas.map((empresa) => (
               <div
                 key={empresa.id}
                 className="d-flex  align-items-center justify-content-center"
@@ -112,34 +132,14 @@ export const MenuEmpresa = () => {
                   variant="outline-light"
                   style={{ width: "80%", maxWidth: "300px" }}
                   onClick={() => {
-                    setEmpresaEnviada(empresa);
-                    setEmpresaSeleccionada(true);
+                    dispatch(setEmpresaEnviada({empresa}));
+                    // setEmpresaSeleccionada(true);
                   }}
                 >
                   {empresa.nombre}
                 </Button>
               </div>
             ))}
-
-            <Button
-              variant="outline-light"
-              className="d-flex  align-items-center justify-content-center "
-              style={{ width: "80%", maxWidth: "300px" }}
-              onClick={() => {
-                setEmpresaEnviada(null);
-                setEmpresaSeleccionada(false);
-              }}
-            >
-              Ver Empresas
-            </Button>
-            <Button
-              variant="outline-light"
-              className="d-flex  align-items-center justify-content-center "
-              style={{ width: "80%", maxWidth: "300px" }}
-              onClick={handleCrearEmpresa}
-            >
-              Agregar Empresa
-            </Button>
           </div>
         ) : (
           ""
@@ -147,13 +147,11 @@ export const MenuEmpresa = () => {
       </div>
 
       <div className={styles.cardEmpresaSucursales}>
-        {/* { empresaEnviada && ( */}
           <HeaderdEmpresa empresa={empresaEnviada} />
-        {/* )} */}
 
-        {empresaSeleccionada && empresaEnviada ?(
+        {empresaEnviada  ?(
           <PageSucursal empresa={empresaEnviada} />
-        ):(<PageEmpresa empresas={empresas}/>) }
+        ):(<PageEmpresa empresas={empresas} />) }
       </div>
 
       {crearEmpresa && (

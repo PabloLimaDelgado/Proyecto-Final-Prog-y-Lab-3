@@ -5,6 +5,7 @@
   gap: 1rem;
   background-color: white;
   height: auto !important;
+  z-index: 1;
 }
 
 .cardSucursalSide h1 {

@@ -1,15 +1,10 @@
-import { useNavigate } from "react-router-dom";
-import { ISucursal } from "../../../types/dtos/sucursal/ISucursal.ts";
 import { IEmpresa } from "../../../types/dtos/empresa/IEmpresa.ts";
 import { FC, useState } from "react";
-import { IUpdateSucursal } from "../../../types/dtos/sucursal/IUpdateSucursal.ts";
 import "./CardEmpresa.css";
-import { VerSucursal } from "../forms/VerSucursal/VerSucursal.tsx";
-import { ModificarSucursal } from "../forms/ModificarSucursal/ModificarSucursal.tsx";
-import { useAppSelector } from "../../../hooks/redux.ts";
-import { ICreateEmpresaDto } from "../../../types/dtos/empresa/ICreateEmpresaDto.ts";
 import { VerEmpresa } from "../forms/VerEmpresa/VerEmpresa.tsx";
 import { ModificarEmpresa } from "../forms/ModificarEmpresa/ModificarEmpresa.tsx";
+import { useAppDispatch } from "../../../hooks/redux.ts";
+import { setEmpresaEnviada } from "../../../redux/slices/EmpresaReducer.ts";
 interface ICardEmpresa{
   empresa: IEmpresa;
 }
@@ -17,7 +12,7 @@ interface ICardEmpresa{
 export const CardEmpresa: FC<ICardEmpresa> = ({ empresa }) => {
   const [empresaView, setEmpresaView] = useState<boolean>(false);
   const [modificarEmpresa, setModificarEmpresa] = useState<boolean>(false);
-
+  const dispatch = useAppDispatch( )
   const handleEmpresaView = () => {
     setEmpresaView(!empresaView);
   };
@@ -27,11 +22,11 @@ export const CardEmpresa: FC<ICardEmpresa> = ({ empresa }) => {
   };
 
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate("");
-  };
+  // const handleNavigate = () => {
+  //   navigate("/vistaEmpresa");
+  // };
 
 
   return (
@@ -40,7 +35,9 @@ export const CardEmpresa: FC<ICardEmpresa> = ({ empresa }) => {
         <h1>{`${empresa?.nombre}`}</h1>
         <img src={empresa.logo} alt="" />
         <div className="buttonsSucursales">
-          <button className="location" onClick={handleNavigate}>
+          <button className="location" onClick={()=>{
+            dispatch(setEmpresaEnviada({empresa}))
+          }}>
             <span className="material-symbols-outlined">location_city</span>
           </button>
           <button className="edit" onClick={handleModificarEmpresa}>
