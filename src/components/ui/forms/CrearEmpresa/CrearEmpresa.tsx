@@ -7,7 +7,7 @@ import "./CrearEmpresa.css";
 import { useAppDispatch } from "../../../../hooks/redux.ts";
 import { setCrearEmpresa } from "../../../../redux/slices/EmpresaReducer.ts";
 
-interface ICrearEmpresa {
+export interface ICrearEmpresa {
   handleCrearEmpresa: () => void;
   initialForm: ICreateEmpresaDto;
 }

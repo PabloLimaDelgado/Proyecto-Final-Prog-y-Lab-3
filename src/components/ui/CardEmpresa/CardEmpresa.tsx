@@ -1,11 +1,16 @@
-import { FC, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { ISucursal } from "../../../types/dtos/sucursal/ISucursal.ts";
 import { IEmpresa } from "../../../types/dtos/empresa/IEmpresa.ts";
+import { FC, useState } from "react";
+import { IUpdateSucursal } from "../../../types/dtos/sucursal/IUpdateSucursal.ts";
 import "./CardEmpresa.css";
+import { VerSucursal } from "../forms/VerSucursal/VerSucursal.tsx";
+import { ModificarSucursal } from "../forms/ModificarSucursal/ModificarSucursal.tsx";
+import { useAppSelector } from "../../../hooks/redux.ts";
+import { ICreateEmpresaDto } from "../../../types/dtos/empresa/ICreateEmpresaDto.ts";
 import { VerEmpresa } from "../forms/VerEmpresa/VerEmpresa.tsx";
 import { ModificarEmpresa } from "../forms/ModificarEmpresa/ModificarEmpresa.tsx";
-import { useAppSelector } from "../../../hooks/redux.ts";
-
-interface ICardEmpresa {
+interface ICardEmpresa{
   empresa: IEmpresa;
 }
 
@@ -21,54 +26,42 @@ export const CardEmpresa: FC<ICardEmpresa> = ({ empresa }) => {
     setModificarEmpresa(!modificarEmpresa);
   };
 
-  const empresaSeleccionada = useAppSelector((state) =>
-    state.empresaReducer.empresa.find((e) => e.id === empresa.id)
-  );
+
+  const navigate = useNavigate();
+
+  const handleNavigate = () => {
+    navigate("");
+  };
+
 
   return (
     <>
-      <div
-        className="cardEmpresa"
-        style={{
-          background: ` linear-gradient(
-          rgba(125, 140, 147, 0.9),
-          rgba(125, 140, 147, 0.9)
-          ),url(${empresaSeleccionada?.logo})`,
-        }}
-      >
-        <div className="cardEmpresaTituloImg">
-          <h2>Sucursales en: {empresaSeleccionada?.nombre}</h2>
-        </div>
-        <div className="buttonsEmpresa">
-          <button className="edit">
-            <span
-              className="material-symbols-outlined"
-              onClick={handleModificarEmpresa}
-            >
-              edit
-            </span>
+      <div className="cartaSucursal">
+        <h1>{`${empresa?.nombre}`}</h1>
+        <img src={empresa.logo} alt="" />
+        <div className="buttonsSucursales">
+          <button className="location" onClick={handleNavigate}>
+            <span className="material-symbols-outlined">location_city</span>
           </button>
-          <button className="visibility">
-            <span
-              className="material-symbols-outlined"
-              onClick={handleEmpresaView}
-            >
-              visibility
-            </span>
+          <button className="edit" onClick={handleModificarEmpresa}>
+            <span className="material-symbols-outlined">edit</span>
+          </button>
+          <button className="visibility" onClick={handleEmpresaView}>
+            <span className="material-symbols-outlined">visibility</span>
           </button>
         </div>
       </div>
 
       {empresaView && (
         <VerEmpresa
-          empresa={empresaSeleccionada ? empresaSeleccionada : empresa}
+          empresa={empresa ? empresa : empresa}
           handleEmpresaVIew={handleEmpresaView}
         />
       )}
       {modificarEmpresa && (
         <ModificarEmpresa
           handleModificarEmpresa={handleModificarEmpresa}
-          initialForm={empresaSeleccionada ? empresaSeleccionada : empresa}
+          initialForm={empresa ? empresa : empresa}
         />
       )}
     </>

@@ -25,10 +25,10 @@ body div {
 
 .edit {
   background-color: transparent;
-  border: 2px solid #2c3e4f;
+  border: 2px solid white;
   border-radius: 0.4rem;
   padding: 0.1rem;
-  color: #2c3e4f;
+  color: white;
 }
 
 .location {

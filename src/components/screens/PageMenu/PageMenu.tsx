@@ -1,5 +1,4 @@
 import "./PageMenu.css";
-import { Header } from "../../ui/Header/Header.tsx";
 import { useNavigate } from "react-router-dom";
 import { MenuOpciones } from "../../ui/MenuOpciones/MenuOpciones.tsx";
 

@@ -5,11 +5,10 @@
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  background: linear-gradient(
-    rgba(125, 140, 147, 1) 30%,
-    rgba(224, 224, 224, 1) 80%
-  );
+  background: #153B50;
   border-right: #1c1c1c 2px solid;
+  color: white;
+
 }
 
 .empresaScrollbar::-webkit-scrollbar {
@@ -37,7 +36,7 @@
   flex-direction: column;
   width: 80%;
   align-items: center;
-  background: rgba(125, 140, 147, 1);
+  background: rgb(255, 255, 255);
 
   overflow-y: scroll;
 }

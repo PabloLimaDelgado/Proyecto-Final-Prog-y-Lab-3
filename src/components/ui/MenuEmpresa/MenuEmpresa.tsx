@@ -6,11 +6,12 @@ import { useFetch } from "../../../hooks/useFetch.ts";
 import { IEmpresa } from "../../../types/dtos/empresa/IEmpresa.ts";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux.ts";
 import { setEmpresas } from "../../../redux/slices/EmpresaReducer.ts";
-import { CardEmpresa } from "../CardEmpresa/CardEmpresa.tsx";
+import { HeaderdEmpresa } from "../HeaderdEmpresa/HeaderdEmpresa.tsx";
 import { ICreateEmpresaDto } from "../../../types/dtos/empresa/ICreateEmpresaDto.ts";
 import { PageSucursal } from "../PageSucursal/PageSucursal.tsx";
 import { ISucursal } from "../../../types/dtos/sucursal/ISucursal.ts";
 import { CrearEmpresa } from "../forms/CrearEmpresa/CrearEmpresa.tsx";
+import { PageEmpresa } from "../PageEmpresa/PageEmpresa.tsx";
 
 export const MenuEmpresa = () => {
   const [showBusinees, setShowBusinnes] = useState<boolean>(false);
@@ -89,7 +90,7 @@ export const MenuEmpresa = () => {
             width: "100px",
             background: "none",
             border: "none",
-            color: "#1c1c1c",
+            color:'white'
           }}
           onClick={handleBusinnes}
         >
@@ -108,7 +109,7 @@ export const MenuEmpresa = () => {
                 style={{ width: "100%" }}
               >
                 <Button
-                  variant="outline-dark"
+                  variant="outline-light"
                   style={{ width: "80%", maxWidth: "300px" }}
                   onClick={() => {
                     setEmpresaEnviada(empresa);
@@ -121,7 +122,18 @@ export const MenuEmpresa = () => {
             ))}
 
             <Button
-              variant="outline-dark"
+              variant="outline-light"
+              className="d-flex  align-items-center justify-content-center "
+              style={{ width: "80%", maxWidth: "300px" }}
+              onClick={() => {
+                setEmpresaEnviada(null);
+                setEmpresaSeleccionada(false);
+              }}
+            >
+              Ver Empresas
+            </Button>
+            <Button
+              variant="outline-light"
               className="d-flex  align-items-center justify-content-center "
               style={{ width: "80%", maxWidth: "300px" }}
               onClick={handleCrearEmpresa}
@@ -135,13 +147,13 @@ export const MenuEmpresa = () => {
       </div>
 
       <div className={styles.cardEmpresaSucursales}>
-        {empresaSeleccionada && empresaEnviada && (
-          <CardEmpresa empresa={empresaEnviada} />
-        )}
+        {/* { empresaEnviada && ( */}
+          <HeaderdEmpresa empresa={empresaEnviada} />
+        {/* )} */}
 
-        {empresaSeleccionada && empresaEnviada && (
+        {empresaSeleccionada && empresaEnviada ?(
           <PageSucursal empresa={empresaEnviada} />
-        )}
+        ):(<PageEmpresa empresas={empresas}/>) }
       </div>
 
       {crearEmpresa && (
