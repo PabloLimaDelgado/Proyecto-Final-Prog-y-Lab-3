@@ -1,32 +1,51 @@
-import { FormEvent } from "react";
-import { useForm } from "../../../../hooks/useForm.ts";
-import { ICreateEmpresaDto } from "../../../../types/dtos/empresa/ICreateEmpresaDto.ts";
-import { IEmpresa } from "../../../../types/dtos/empresa/IEmpresa.ts";
+import { FormEvent, useEffect, useState } from "react";
+import { useForm } from "../../../../../hooks/useForm.ts";
+import { ICreateEmpresaDto } from "../../../../../types/dtos/empresa/ICreateEmpresaDto.ts";
+import { IEmpresa } from "../../../../../types/dtos/empresa/IEmpresa.ts";
+import { IPais } from "../../../../../types/IPais.ts";
+import "./CrearEmpresa.css";
+import { useAppDispatch } from "../../../../../hooks/redux.ts";
+import { setCrearEmpresa } from "../../../../../redux/slices/EmpresaReducer.ts";
 
-import "./ModificarEmpresa.css";
-import { useAppDispatch } from "../../../../hooks/redux.ts";
-import { setModificarEmpresa } from "../../../../redux/slices/EmpresaReducer.ts";
-
-interface IModificarEmpresa {
-  handleModificarEmpresa: () => void;
-  initialForm: IEmpresa;
+export interface ICrearEmpresa {
+  handleCrearEmpresa: () => void;
+  initialForm: ICreateEmpresaDto;
 }
 
-export const ModificarEmpresa = ({
-  handleModificarEmpresa,
+export const CrearEmpresa = ({
+  handleCrearEmpresa,
   initialForm,
-}: IModificarEmpresa) => {
+}: ICrearEmpresa) => {
   const { onInputChange, formState } = useForm<ICreateEmpresaDto>(initialForm);
   const dispatch = useAppDispatch();
+
+  const [pais, setPais] = useState<IPais[]>([]);
+
+  useEffect(() => {
+    const fetchPaises = async () => {
+      try {
+        const response: Response = await fetch(
+          "http://190.221.207.224:8090/paises"
+        );
+        const data: IPais[] = await response.json();
+        setPais(data);
+      } catch (error) {
+        console.log(error);
+        setPais([]);
+      }
+    };
+
+    fetchPaises();
+  }, []);
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       const response: Response = await fetch(
-        `http://190.221.207.224:8090/empresas/${initialForm.id}`,
+        "http://190.221.207.224:8090/empresas",
         {
-          method: "PUT",
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
@@ -35,8 +54,14 @@ export const ModificarEmpresa = ({
       );
 
       const data: IEmpresa = await response.json();
-      dispatch(setModificarEmpresa(data));
-      handleModificarEmpresa();
+
+      const newEmpresa: IEmpresa = {
+        ...data,
+        sucursales: [],
+      };
+
+      dispatch(setCrearEmpresa(newEmpresa));
+      handleCrearEmpresa();
     } catch (error) {
       console.error("Error:", error);
     }
@@ -45,7 +70,7 @@ export const ModificarEmpresa = ({
   return (
     <div className="modalEmpresa">
       <form onSubmit={onSubmit}>
-        <h1>Modificar Empresa</h1>
+        <h1>Crear Empresa</h1>
         <input
           type="text"
           placeholder="Ingrese un nombre"
@@ -65,7 +90,7 @@ export const ModificarEmpresa = ({
           placeholder="Ingrese un cuit"
           name="cuit"
           onChange={onInputChange}
-          value={formState.cuit}
+          value={formState.cuit ? formState.cuit : ""}
         />
         <input
           type="text"
@@ -79,7 +104,7 @@ export const ModificarEmpresa = ({
           <button
             type="reset"
             className="buttonRojo"
-            onClick={handleModificarEmpresa}
+            onClick={handleCrearEmpresa}
           >
             CANCELAR
           </button>

@@ -1,12 +1,13 @@
-import { IEmpresa } from "../../../../types/dtos/empresa/IEmpresa";
+import { IEmpresa } from "../../../../../types/dtos/empresa/IEmpresa";
 import "./VerEmpresa.css";
 
 interface IVerEmpresa {
-  empresa: IEmpresa;
+  empresa: IEmpresa | null;
   handleEmpresaVIew: () => void;
 }
 
 export const VerEmpresa = ({ empresa, handleEmpresaVIew }: IVerEmpresa) => {
+  if (!empresa) return null;
   return (
     <>
       <div className="verEmpresaContainer">

@@ -3,7 +3,7 @@ import "./PageEmpresa.css";
 import { IEmpresa } from "../../../types/dtos/empresa/IEmpresa.ts";
 import { FC, useState } from "react";
 import { ICreateEmpresaDto } from "../../../types/dtos/empresa/ICreateEmpresaDto.ts";
-import { CrearEmpresa } from "../forms/CrearEmpresa/CrearEmpresa.tsx";
+import { CrearEmpresa } from "../forms/Empresa/CrearEmpresa/CrearEmpresa.tsx";
 import { CardEmpresa } from "../CardEmpresa/CardEmpresa.tsx";
 // import { useAppSelector } from "../../../hooks/redux.ts";
 // import { ICreateSucursal } from "../../../types/dtos/sucursal/ICreateSucursal.ts";
@@ -29,11 +29,6 @@ export const PageEmpresa: FC<ISucursalList> = ({ empresas }) => {
   //   state.empresaReducer.empresa.find((e) => e.id === empresas[id])
   // );
 
-
-  const handleCrearSucursal = () => {
-    setCrearSucursal(!crearSucursal);
-  };
-
   return (
     <div className="cardSucursalSide">
       <div
@@ -41,18 +36,9 @@ export const PageEmpresa: FC<ISucursalList> = ({ empresas }) => {
         style={{ width: "100%" }}
       ></div>
       <div className="cartaSucursalContainer">
-        { empresas.map((empresa) => (
-            <CardEmpresa
-              key={empresa.id}
-              empresa={empresa}
-            />
-          ))}
-        <div className="cardSucursalButton">
-          <button onClick={handleCrearSucursal}>
-            <h2>Agregar Empresa</h2>
-            <span className="material-symbols-outlined">add</span>
-          </button>
-        </div>
+        {empresas.map((empresa) => (
+          <CardEmpresa key={empresa.id} empresa={empresa} />
+        ))}
       </div>
 
       {crearEmpresa && (

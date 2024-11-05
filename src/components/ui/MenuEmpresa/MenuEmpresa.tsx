@@ -10,7 +10,7 @@ import { HeaderdEmpresa } from "../HeaderdEmpresa/HeaderdEmpresa.tsx";
 import { ICreateEmpresaDto } from "../../../types/dtos/empresa/ICreateEmpresaDto.ts";
 import { PageSucursal } from "../PageSucursal/PageSucursal.tsx";
 import { ISucursal } from "../../../types/dtos/sucursal/ISucursal.ts";
-import { CrearEmpresa } from "../forms/CrearEmpresa/CrearEmpresa.tsx";
+import { CrearEmpresa } from "../forms/Empresa/CrearEmpresa/CrearEmpresa.tsx";
 import { PageEmpresa } from "../PageEmpresa/PageEmpresa.tsx";
 
 export const MenuEmpresa = () => {

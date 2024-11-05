@@ -1,0 +1,193 @@
+.modalProducto {
+    z-index: 2;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(28, 28, 28, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  
+  .modalProducto form {
+    position: relative; /* Cambiado a relative */
+    background-color: #e0e0e0;
+    padding: 0.4rem;
+    border-radius: 0.4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    height: 65%;
+    border: 2px solid #1c1c1c;
+    box-shadow: 0px 0px 10px 0px #e0e0e0;
+  }
+  
+  .modalProducto form h1 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+  
+  .modalProducto form input {
+    margin: 0.4rem;
+    border: 1px solid #1c1c1c;
+    border-radius: 0.4rem;
+    height: 20vh;
+    padding: 0.4rem;
+    width: 100%;
+    font-family: "Moulpali", sans-serif;
+  }
+  
+  .modalProducto form input::placeholder {
+    padding: 0.4rem;
+    color: rgba(28, 28, 28, 0.8);
+    font-family: "Moulpali", sans-serif;
+  }
+  
+  .modalProducto input {
+    background-color: #e0e0e0;
+    outline: none;
+    border: 1px solid #1c1c1c;
+  }
+  
+  .grids {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grids div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem;
+  }
+  
+  .grids div input {
+    width: 100%;
+    height: 10%;
+  }
+  
+  .grids select {
+    width: 100%;
+    height: 10%;
+    border: 1px solid #1c1c1c;
+    border-radius: 0.4rem;
+    background-color: transparent;
+    margin: 0.4rem;
+    color: rgba(28, 28, 28, 0.8);
+  }
+  
+  .grids select option {
+    color: #1c1c1c;
+  }
+  
+  .alergenosSelect {
+    z-index: 2;
+    position: relative;
+    background-color: #e0e0e0;
+    border: 1px solid #1c1c1c;
+    border-radius: 0.4rem;
+    padding: 0.4rem;
+    width: 100%;
+  }
+  
+  .pAlergenosContainer {
+    display: flex;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    width: 100%;
+    height: 10%;
+    border: 1px solid #1c1c1c;
+    border-radius: 0.4rem;
+    background-color: transparent;
+    color: rgba(28, 28, 28, 0.8);
+    font-family: "Moulpali", sans-serif;
+  }
+  
+  .pAlergenosContainer button {
+    display: flex;
+    background-color: transparent;
+    border: none;
+  }
+  
+  .pAlergenosContainer p {
+    margin: 0 !important;
+  }
+  
+  .divInputs {
+    height: auto; /* Cambiado a auto para ajustar el tamaño */
+    background-color: #e0e0e0;
+    margin: 0.4rem 0; /* Añadir margen para separar cada input */
+    flex-direction: row !important;
+    justify-content: end !important;
+  }
+  
+  .divInputs p {
+    margin: 0 !important;
+  }
+  
+  .divHabilitado {
+    display: flex !important;
+    width: 50% !important;
+    height: 20% !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  
+  .divHabilitado label {
+    display: flex !important;
+    background-color: #e0e0e0;
+  }
+  
+  .divAlergenos {
+    position: absolute; /* Posicionar absolutamente */
+    top: calc(40% + 0.4rem); /* Colocar debajo del contenedor */
+    left: 0; /* Alinear a la izquierda */
+    width: 50%; /* Ancho completo */
+    height: auto;
+    background-color: #e0e0e0; /* Fondo */
+    border: 1px solid #1c1c1c; /* Borde */
+    border-radius: 0.4rem; /* Esquinas redondeadas */
+    z-index: 3; /* Asegurar que esté por encima */
+    padding: 0.4rem; /* Espaciado interno */
+  }
+  
+  .divButtonsSucursal {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+  
+  .buttonVerdeSucursalCrear {
+    border: 1px solid #7a9970;
+    font-family: "Roboto", sans-serif;
+    padding: 0.4rem;
+    margin: 0.4rem;
+    color: #7a9970;
+    background-color: transparent;
+    width: 20%;
+    border-radius: 0.4rem;
+  }
+  
+  .buttonRojoSucursalCrear {
+    border: 1px solid #a75d5d;
+    font-family: "Roboto", sans-serif;
+    padding: 0.4rem;
+    margin: 0.4rem;
+    color: #a75d5d;
+    background-color: transparent;
+    width: 20%;
+    border-radius: 0.4rem;
+  }
+  
+  .denominacionInput{
+    height: 53% !important;
+  }
+  

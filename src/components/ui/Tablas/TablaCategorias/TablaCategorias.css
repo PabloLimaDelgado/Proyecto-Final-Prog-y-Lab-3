@@ -1,0 +1,142 @@
+.tableCategorias {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.tableCategorias table {
+  height: 70vh;
+  width: 60vw;
+  background-color: #e0e0e0;
+  box-shadow: 0px 0px 10px 4px #1c1c1c;
+  border: 1px solid #1c1c1c;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+}
+
+.tableCategorias table thead {
+  border-bottom: 1px solid #1c1c1c;
+  position: fixed;
+  width: 60vw;
+  z-index: 1;
+  background-color: #e0e0e0;
+}
+
+.tableCategorias table tbody {
+  margin-top: 2.5rem;
+}
+.tableCategorias table thead tr {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.tableCategorias table thead tr th {
+  padding: 0.4rem;
+  color: #1c1c1c;
+  font-family: "Moulpali", sans-serif;
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.tableCategorias table tbody tr {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.tableCategorias table tbody tr td {
+  padding: 1rem;
+  color: #1c1c1c;
+  font-family: "Moulpali", sans-serif;
+  font-size: 1.2rem;
+  font-weight: lighter;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+
+.buttonsAlergeno {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.buttonsAlergeno button {
+  display: flex;
+}
+
+.agregarCategoria {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  border-top: 1px solid #1c1c1c;
+}
+
+.agregarCategoria td button {
+  display: flex;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  border: 1px solid #1c1c1c;
+  background-color: #e0e0e0;
+  font-family: "Roboto", sans-serif;
+}
+
+.subcategorias ul {
+  list-style: none;
+}
+
+.subcategorias ul li {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: end;
+  gap: 1rem;
+  margin: 0.4rem;
+}
+
+.subcategorias ul li button {
+  display: flex;
+}
+
+.subcategorias ul li p {
+  margin: 0 !important;
+}
+
+.add {
+  display: flex;
+  align-items: start;
+  flex-direction: row;
+  justify-content: start;
+  border: none;
+  background-color: #e0e0e0;
+}
+
+.add span {
+  background-color: #e0e0e0;
+  border: 2px solid #556b56;
+  border-radius: 0.4rem;
+  padding: 0.1rem;
+  color: #556b56;
+}
+
+.editCategoria {
+  display: flex;
+  align-items: start;
+  flex-direction: row;
+  justify-content: start;
+  border: none;
+  background-color: #e0e0e0;
+}
+
+.editCategoria span {
+  background-color: #e0e0e0;
+  border: 2px solid #2c3e4f;
+  border-radius: 0.4rem;
+  padding: 0.1rem;
+  color: #2c3e4f;
+}

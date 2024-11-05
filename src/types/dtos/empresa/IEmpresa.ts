@@ -1,6 +1,7 @@
 import { IPais } from "../../IPais.ts";
-
+import { IAlergenos } from "../alergenos/IAlergenos.ts";
 import { ISucursal } from "../sucursal/ISucursal.ts";
+
 export interface IEmpresa {
   id: number;
   nombre: string;
@@ -9,4 +10,5 @@ export interface IEmpresa {
   logo: string | null;
   sucursales: ISucursal[];
   pais: IPais;
+  alergenos?: IAlergenos[];
 }

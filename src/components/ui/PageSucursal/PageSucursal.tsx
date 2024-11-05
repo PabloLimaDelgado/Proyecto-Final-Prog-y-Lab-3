@@ -4,7 +4,7 @@ import { IEmpresa } from "../../../types/dtos/empresa/IEmpresa.ts";
 import { FC, useState } from "react";
 import { useAppSelector } from "../../../hooks/redux.ts";
 import { ICreateSucursal } from "../../../types/dtos/sucursal/ICreateSucursal";
-import { CrearSucursal } from "../forms/CrearSucursal/CrearSucursal.tsx";
+import { CrearSucursal } from "../forms/Sucursal/CrearSucursal/CrearSucursal.tsx";
 
 interface ISucursalList {
   empresa: IEmpresa;

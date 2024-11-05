@@ -5,6 +5,7 @@ type FormState<T> = {
   onInputChange: (
     event: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => void;
+  setFormState: React.Dispatch<React.SetStateAction<T>>;
 };
 
 export const useForm = <T extends Record<string, any>>(
@@ -37,5 +38,6 @@ export const useForm = <T extends Record<string, any>>(
   return {
     formState,
     onInputChange,
+    setFormState,
   };
 };

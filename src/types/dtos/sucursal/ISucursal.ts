@@ -1,6 +1,7 @@
 import { IDomicilio } from "../../IDomicilio.ts";
 import { ICategorias } from "../categorias/ICategorias.ts";
 import { IEmpresa } from "../empresa/IEmpresa.ts";
+import { IProductos } from "../productos/IProductos.ts";
 
 
 export interface ISucursal {
@@ -17,4 +18,5 @@ export interface ISucursal {
   eliminado: boolean;
   horarioCierre: string;
   logo?: string;
+  productos?: IProductos[];
 }

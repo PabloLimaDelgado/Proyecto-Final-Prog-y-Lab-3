@@ -4,8 +4,8 @@ import { IEmpresa } from "../../../types/dtos/empresa/IEmpresa.ts";
 import { FC, useState } from "react";
 import { IUpdateSucursal } from "../../../types/dtos/sucursal/IUpdateSucursal.ts";
 import "./CardSucursal.css";
-import { VerSucursal } from "../forms/VerSucursal/VerSucursal.tsx";
-import { ModificarSucursal } from "../forms/ModificarSucursal/ModificarSucursal.tsx";
+import { VerSucursal } from "../forms/Sucursal/VerSucursal/VerSucursal.tsx";
+import { ModificarSucursal } from "../forms/Sucursal/ModificarSucursal/ModificarSucursal.tsx";
 import { useAppSelector } from "../../../hooks/redux.ts";
 interface ICardSucursal {
   sucursal: ISucursal;
@@ -50,7 +50,10 @@ export const CardSucursal: FC<ICardSucursal> = ({ sucursal, empresa }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate("/vistaMenu");
+    console.log(empresa);
+    console.log(sucursal);
+
+    navigate("/vistaMenu", { state: { empresa, sucursal } });
   };
 
   const empresaSeleccionada = useAppSelector((state) =>

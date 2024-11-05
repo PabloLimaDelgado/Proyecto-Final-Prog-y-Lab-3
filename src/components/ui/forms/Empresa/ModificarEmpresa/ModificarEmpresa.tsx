@@ -1,51 +1,33 @@
-import { FormEvent, useEffect, useState } from "react";
-import { useForm } from "../../../../hooks/useForm.ts";
-import { ICreateEmpresaDto } from "../../../../types/dtos/empresa/ICreateEmpresaDto.ts";
-import { IEmpresa } from "../../../../types/dtos/empresa/IEmpresa.ts";
-import { IPais } from "../../../../types/IPais.ts";
-import "./CrearEmpresa.css";
-import { useAppDispatch } from "../../../../hooks/redux.ts";
-import { setCrearEmpresa } from "../../../../redux/slices/EmpresaReducer.ts";
+import { FormEvent } from "react";
+import { useForm } from "../../../../../hooks/useForm.ts";
+import { ICreateEmpresaDto } from "../../../../../types/dtos/empresa/ICreateEmpresaDto.ts";
+import { IEmpresa } from "../../../../../types/dtos/empresa/IEmpresa.ts";
 
-export interface ICrearEmpresa {
-  handleCrearEmpresa: () => void;
-  initialForm: ICreateEmpresaDto;
+import "./ModificarEmpresa.css";
+import { useAppDispatch } from "../../../../../hooks/redux.ts";
+import { setModificarEmpresa } from "../../../../../redux/slices/EmpresaReducer.ts";
+
+interface IModificarEmpresa {
+  handleModificarEmpresa: () => void;
+  initialForm?: IEmpresa | null; // Permitir que sea opcional o `null`
 }
 
-export const CrearEmpresa = ({
-  handleCrearEmpresa,
+export const ModificarEmpresa = ({
+  handleModificarEmpresa,
   initialForm,
-}: ICrearEmpresa) => {
+}: IModificarEmpresa) => {
+  if (!initialForm) return null;
   const { onInputChange, formState } = useForm<ICreateEmpresaDto>(initialForm);
   const dispatch = useAppDispatch();
-
-  const [pais, setPais] = useState<IPais[]>([]);
-
-  useEffect(() => {
-    const fetchPaises = async () => {
-      try {
-        const response: Response = await fetch(
-          "http://190.221.207.224:8090/paises"
-        );
-        const data: IPais[] = await response.json();
-        setPais(data);
-      } catch (error) {
-        console.log(error);
-        setPais([]);
-      }
-    };
-
-    fetchPaises();
-  }, []);
 
   const onSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
     try {
       const response: Response = await fetch(
-        "http://190.221.207.224:8090/empresas",
+        `http://190.221.207.224:8090/empresas/${initialForm.id}`,
         {
-          method: "POST",
+          method: "PUT",
           headers: {
             "Content-Type": "application/json",
           },
@@ -54,14 +36,8 @@ export const CrearEmpresa = ({
       );
 
       const data: IEmpresa = await response.json();
-
-      const newEmpresa: IEmpresa = {
-        ...data,
-        sucursales: [],
-      };
-
-      dispatch(setCrearEmpresa(newEmpresa));
-      handleCrearEmpresa();
+      dispatch(setModificarEmpresa(data));
+      handleModificarEmpresa();
     } catch (error) {
       console.error("Error:", error);
     }
@@ -70,7 +46,7 @@ export const CrearEmpresa = ({
   return (
     <div className="modalEmpresa">
       <form onSubmit={onSubmit}>
-        <h1>Crear Empresa</h1>
+        <h1>Modificar Empresa</h1>
         <input
           type="text"
           placeholder="Ingrese un nombre"
@@ -90,7 +66,7 @@ export const CrearEmpresa = ({
           placeholder="Ingrese un cuit"
           name="cuit"
           onChange={onInputChange}
-          value={formState.cuit ? formState.cuit : ""}
+          value={formState.cuit}
         />
         <input
           type="text"
@@ -104,7 +80,7 @@ export const CrearEmpresa = ({
           <button
             type="reset"
             className="buttonRojo"
-            onClick={handleCrearEmpresa}
+            onClick={handleModificarEmpresa}
           >
             CANCELAR
           </button>
