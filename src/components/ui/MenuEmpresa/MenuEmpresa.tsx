@@ -5,7 +5,10 @@ import { useEffect, useState } from "react";
 import { useFetch } from "../../../hooks/useFetch.ts";
 import { IEmpresa } from "../../../types/dtos/empresa/IEmpresa.ts";
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux.ts";
-import { setEmpresas, setEmpresaEnviada } from "../../../redux/slices/EmpresaReducer.ts";
+import {
+  setEmpresas,
+  setEmpresaEnviada,
+} from "../../../redux/slices/EmpresaReducer.ts";
 import { HeaderdEmpresa } from "../HeaderdEmpresa/HeaderdEmpresa.tsx";
 import { ICreateEmpresaDto } from "../../../types/dtos/empresa/ICreateEmpresaDto.ts";
 import { PageSucursal } from "../PageSucursal/PageSucursal.tsx";
@@ -19,7 +22,9 @@ export const MenuEmpresa = () => {
   const [crearEmpresa, setCrearEmpresa] = useState<boolean>(false);
   const API = "http://190.221.207.224:8090";
   const dispatch = useAppDispatch();
-  const empresaEnviada = useAppSelector((state )=> state.empresaReducer.empresaEnviada)
+  const empresaEnviada = useAppSelector(
+    (state) => state.empresaReducer.empresaEnviada
+  );
   const { data } = useFetch<IEmpresa[]>(`${API}/empresas`);
 
   useEffect(() => {
@@ -45,9 +50,7 @@ export const MenuEmpresa = () => {
     empresaId: number
   ): Promise<ISucursal[]> => {
     try {
-      const response = await fetch(
-        `${API}/sucursales/porEmpresa/${empresaId}`
-      );
+      const response = await fetch(`${API}/sucursales/porEmpresa/${empresaId}`);
 
       if (!response.ok) {
         throw new Error("Error al obtener sucursales");
@@ -89,7 +92,7 @@ export const MenuEmpresa = () => {
             width: "100px",
             background: "none",
             border: "none",
-            color:'white'
+            color: "white",
           }}
           onClick={handleBusinnes}
         >
@@ -101,14 +104,12 @@ export const MenuEmpresa = () => {
             className={`d-flex flex-column w-100 gap-3 mt-4 align-items-center empresaScrollbar ${styles.empresaScrollbar}`}
             style={{ height: "auto", overflowX: "hidden" }}
           >
-             <Button
+            <Button
               variant="light"
               className="d-flex  align-items-center justify-content-center "
               style={{ width: "80%", maxWidth: "300px" }}
               onClick={() => {
-                // setEmpresaEnviada(null);
-                // setEmpresaSeleccionada(false);
-                dispatch(setEmpresaEnviada({empresa: null}));
+                dispatch(setEmpresaEnviada({ empresa: null }));
               }}
             >
               Ver Empresas
@@ -121,8 +122,7 @@ export const MenuEmpresa = () => {
             >
               Agregar Empresa
             </Button>
-            {
-            empresas.map((empresa) => (
+            {empresas.map((empresa) => (
               <div
                 key={empresa.id}
                 className="d-flex  align-items-center justify-content-center"
@@ -132,7 +132,7 @@ export const MenuEmpresa = () => {
                   variant="outline-light"
                   style={{ width: "80%", maxWidth: "300px" }}
                   onClick={() => {
-                    dispatch(setEmpresaEnviada({empresa}));
+                    dispatch(setEmpresaEnviada({ empresa }));
                     // setEmpresaSeleccionada(true);
                   }}
                 >
@@ -147,11 +147,13 @@ export const MenuEmpresa = () => {
       </div>
 
       <div className={styles.cardEmpresaSucursales}>
-          <HeaderdEmpresa empresa={empresaEnviada} />
+        <HeaderdEmpresa empresa={empresaEnviada} />
 
-        {empresaEnviada  ?(
+        {empresaEnviada ? (
           <PageSucursal empresa={empresaEnviada} />
-        ):(<PageEmpresa empresas={empresas} />) }
+        ) : (
+          <PageEmpresa empresas={empresas} />
+        )}
       </div>
 
       {crearEmpresa && (

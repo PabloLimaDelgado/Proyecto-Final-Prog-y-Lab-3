@@ -33,7 +33,7 @@ export const HeaderdEmpresa: FC<ICardEmpresa> = ({ empresa = null }) => {
             {/* Contenedor para el título y la imagen de la empresa */}
             <div className="title d-flex align-items-center justify-content-center gap-5 pr-3">
               <div className="img">
-                {/* Imagen del logo de la empresa seleccionada */}
+
                 <img
                   src={
                     empresaSeleccionada?.logo ? empresaSeleccionada?.logo : ""
@@ -41,7 +41,6 @@ export const HeaderdEmpresa: FC<ICardEmpresa> = ({ empresa = null }) => {
                   alt="Logo de la Empresa"
                 />
               </div>
-              {/* Nombre de la empresa en mayúsculas */}
               <h2>{empresaSeleccionada?.nombre?.toUpperCase()}</h2>
             </div>
 

@@ -5,7 +5,7 @@
   justify-content: start;
   flex-direction: column;
   border-right: 0.1rem solid #1c1c1c;
-  background: rgba(125, 140, 147, 0.9);
+  background:#153B50;
 }
 
 .menuContainer ul {
@@ -26,31 +26,16 @@
 }
 
 .Categorias {
-  background: linear-gradient(
-      rgba(125, 140, 147, 0.9),
-      rgba(125, 140, 147, 0.9)
-    ),
-    url("/src/assets/fondoMenuCategorias.png");
+  background: #153B50;
   background-size: contain;
 }
 
 .Productos {
-  background: linear-gradient(
-      rgba(125, 140, 147, 0.9),
-      rgba(125, 140, 147, 0.9)
-    ),
-    url("/src/assets/fondoMenuProductos.png");
-  background-repeat: no-repeat;
-  background-position: center;
+  background:#153B50
 }
 
 .Alergenos {
-  background: linear-gradient(
-      rgba(125, 140, 147, 0.9),
-      rgba(125, 140, 147, 0.9)
-    ),
-    url("/src/assets/fondoMenuAlergenos.png");
-  background-size: contain;
+  background: #153B50
 }
 
 .buttonSeleccionado {
