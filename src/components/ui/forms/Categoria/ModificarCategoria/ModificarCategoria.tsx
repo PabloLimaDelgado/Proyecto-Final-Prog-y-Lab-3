@@ -62,7 +62,7 @@ export const ModificarCategoria: FC<IModificarCategoria> = ({
   return (
     <div className="modalCategoria">
       <form onSubmit={onSubmit}>
-        <h1>Crear Categoria</h1>
+        <h1>Modificar Categoria</h1>
         <input
           type="text"
           placeholder="Ingrese una denominacion"

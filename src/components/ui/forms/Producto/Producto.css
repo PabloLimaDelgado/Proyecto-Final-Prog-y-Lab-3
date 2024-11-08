@@ -28,12 +28,14 @@
   .modalProducto form h1 {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
+    color: black;
     font-size: 1.5rem;
   }
   
   .modalProducto form input {
     margin: 0.4rem;
     border: 1px solid #1c1c1c;
+    color: black;
     border-radius: 0.4rem;
     height: 20vh;
     padding: 0.4rem;
@@ -93,6 +95,7 @@
     border-radius: 0.4rem;
     padding: 0.4rem;
     width: 100%;
+    color: black !important;
   }
   
   .pAlergenosContainer {
@@ -125,10 +128,12 @@
     margin: 0.4rem 0; /* Añadir margen para separar cada input */
     flex-direction: row !important;
     justify-content: end !important;
-  }
+    }
   
   .divInputs p {
     margin: 0 !important;
+    color: black !important;
+
   }
   
   .divHabilitado {

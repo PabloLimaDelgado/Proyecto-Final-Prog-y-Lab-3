@@ -107,6 +107,10 @@ export const CrearProducto: FC<ITablaProducto> = ({
       const data: IProductos = await response.json();
 
       if (sucursal?.id) {
+        console.log("entre");
+        
+        console.log(data);
+        
         dispatch(
           setAgregarProducto({
             producto: data,

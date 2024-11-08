@@ -6,26 +6,24 @@
   border: 1px solid #1c1c1c;
   margin: 0.4rem;
   align-items: center;
-  background-color: #e0e0e0;
-  box-shadow: inset 0px 0px 10px #1c1c1c;
   border-radius: 5px;
   justify-self: center;
   position: relative;
   overflow: hidden;
+  background-color: rgba(21, 59, 80, 1);
 }
 
 .cartaSucursal h1 {
-  font-size: 1rem;
-  color: #1c1c1c;
-  margin: 0.4rem;
-  font-family: "Roboto", sans-serif;
-  font-weight: 500;
-  font-style: normal;
+  font-size: 1rem !important;
+  color: white !important;
+  font-family: "Roboto", sans-serif !important;
+  font-weight: 500 !important;
+  font-style: normal !important;
 }
 
 .cartaSucursal p {
-  color: #1c1c1c;
-  margin: 0.4rem;
+  color: white;
+  margin: 1rem;
   font-family: "Moulpali", sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -33,7 +31,7 @@
 
 .cartaSucursal img {
   width: 60%;
-  height: 25vh;
+  height: 20vh;
   position: relative;
   border: 1px solid #1c1c1c;
   border-radius: 0.4rem;
@@ -45,11 +43,12 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: -300px;
+  top: -350px;
   left: 50%;
+  margin: 0.4rem;
   transform: translate(-52.5%, 0%);
   transition: all 0.8s ease;
-  background-color: #153b5060;
+  background-color: rgba(21, 59, 80, 0.95);
   padding: 1rem;
   border-radius: 5px;
   visibility: hidden;
@@ -57,7 +56,7 @@
 }
 
 .cartaSucursal:hover .buttonsSucursales {
-  top: -2%;
+  top: -2.5%;
   visibility: visible;
 }
 

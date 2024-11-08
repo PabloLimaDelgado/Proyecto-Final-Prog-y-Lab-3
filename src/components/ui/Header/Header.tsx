@@ -1,4 +1,4 @@
-import "./Header.css";
+import "./HeaderSucursal.css";
 
 interface HeaderProps {
   nombreVista: string;

@@ -8,6 +8,9 @@ import { ModificarProducto } from "../../forms/Producto/ModificarProducto/Modifi
 import { VerProducto } from "../../forms/Producto/VerProducto/VerProducto.tsx";
 import { EliminarProducto } from "../../forms/Producto/EliminarProducto/EliminarProducto.tsx";
 import { useFetch } from "../../../../hooks/useFetch.ts";
+import { useSelector } from "react-redux";
+import { RootState } from "@reduxjs/toolkit/query";
+import { useAppSelector } from "../../../../hooks/redux.ts";
 
 interface ITablaProducto {
   sucursal?: ISucursal;
@@ -21,6 +24,14 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
   const [verProducto, setVerProducto] = useState<boolean>(false);
   const [eliminarProducto, setEliminarProducto] = useState<boolean>(false);
 
+  const productosSucursal = useAppSelector((state) =>
+    state.empresaReducer.empresa
+      .find((emp) => emp.id === sucursal?.empresa.id)
+      ?.sucursales.find((sucur) => sucur.id === sucursal?.id)
+  );
+
+  console.log(productosSucursal);
+  
   const handleCrearProducto = () => {
     setCrearProducto(!crearProducto);
   };
@@ -51,10 +62,9 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
     imagenes: [],
   };
 
-  const [paginaActual, setPaginaActual] = useState(1);
+  const [paginaActual, setPaginaActual] = useState(0);
   const [totalPaginas, setTotalPaginas] = useState(0);
   const itemsPorPagina = 5;
-  const [dataNueva, setDataNueva] = useState<any>(null); // Estado para almacenar data
 
   const { data } = useFetch<any>(
     `http://190.221.207.224:8090/articulos/pagedPorSucursal/${sucursal?.id}?page=${paginaActual}&size=${itemsPorPagina}`
@@ -67,7 +77,6 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
   useEffect(() => {
     if (data) {
       setTotalPaginas(data.totalPages);
-      setDataNueva(data);
     }
   }, [data, produtos, sucursal]);
 
@@ -78,7 +87,8 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
   };
 
   const handlePaginaAnterior = () => {
-    if (paginaActual > 1) {
+    if (paginaActual > 0) {
+      console.log("entre");
       setPaginaActual(paginaActual - 1);
     }
   };
@@ -108,8 +118,6 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
                   const productoSucursal = productos.find(
                     (prod) => prod.id === producto.id
                   );
-
-                  console.log(productoSucursal);
 
                   return (
                     <tr key={producto.id}>
@@ -166,7 +174,9 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
                     </tr>
                   );
                 })
-              : sucursal && produtos?.map((produtoSinPafina) => {
+              : sucursal && //PORQUE NO ME RENDERIZA ACA EL PRUDCTO AÑADIDO EN LA SUCURSAL EL REDUX
+                totalPaginas == 0 &&
+                productosSucursal?.productos?.map((produtoSinPafina) => {
                   const { productos = [] } = sucursal;
                   const productoSucursal = productos.find(
                     (prod) => prod.id === produtoSinPafina.id
@@ -174,18 +184,15 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
 
                   return (
                     <tr key={produtoSinPafina.id}>
-                      <td>{productoSucursal?.denominacion}</td>
-                      <td>{productoSucursal?.precioVenta}</td>
+                      <td>{produtoSinPafina?.denominacion}</td>
+                      <td>{produtoSinPafina?.precioVenta}</td>
                       <td>
                         <div className="descripcion">
                           {productoSucursal?.descripcion}
                         </div>
                       </td>
-                      <td>
-                        {produtoSinPafina.categoria?.denominacion ||
-                          "Sin categoría"}
-                      </td>
-                      <td>{productoSucursal?.habilitado ? "Sí" : "No"}</td>
+                      <td>{produtoSinPafina?.categoria?.denominacion}</td>
+                      <td>{produtoSinPafina?.habilitado ? "Sí" : "No"}</td>
                       <td>
                         <div className="buttonsAlergeno">
                           <button
@@ -229,21 +236,34 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
                     </tr>
                   );
                 })}
-            <tr className="agregarProducto">
-              <td colSpan={6}>
-                <button onClick={handleCrearProducto}>AGREGAR PRODUCTO</button>
-              </td>
-            </tr>
+            {totalPaginas === 0 && (
+              <tr className="agregarProducto">
+                <td colSpan={6}>
+                  <button onClick={handleCrearProducto}>
+                    AGREGAR PRODUCTO
+                  </button>
+                </td>
+              </tr>
+            )}
+            {data && data.content && paginaActual === totalPaginas - 1 && (
+              <tr className="agregarProducto">
+                <td colSpan={6}>
+                  <button onClick={handleCrearProducto}>
+                    AGREGAR PRODUCTO
+                  </button>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
         <div className="pagination">
-          <button onClick={handlePaginaAnterior} disabled={paginaActual === 1}>
+          <button onClick={handlePaginaAnterior} disabled={paginaActual === 0}>
             Anterior
           </button>
-          <span>{`Página ${paginaActual} de ${totalPaginas}`}</span>
+          <span>{`Página ${paginaActual + 1} de ${totalPaginas}`}</span>
           <button
             onClick={handlePaginaSiguiente}
-            disabled={paginaActual === totalPaginas}
+            disabled={paginaActual === totalPaginas - 1}
           >
             Siguiente
           </button>

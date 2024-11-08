@@ -25,9 +25,7 @@ export const PageEmpresa: FC<ISucursalList> = ({ empresas }) => {
     logo: "",
   };
 
-  // const empresaSeleccionada = useAppSelector((state) =>
-  //   state.empresaReducer.empresa.find((e) => e.id === empresas[id])
-  // );
+
 
   return (
     <div className="cardSucursalSide">

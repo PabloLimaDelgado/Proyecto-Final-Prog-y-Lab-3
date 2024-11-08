@@ -139,11 +139,13 @@ const EmpresaReducer = createSlice({
     ) {
       const { producto, sucursalId } = action.payload;
 
-      state.empresa.forEach((empresas) => {
-        if (empresas.sucursales) {
-          empresas.sucursales
-            .find((sucursal) => sucursal.id === sucursalId)
-            ?.productos?.push(producto);
+      state.empresa.forEach((empresa) => {
+        const sucursal = empresa.sucursales?.find(
+          (sucursal) => sucursal.id === sucursalId
+        );
+
+        if (sucursal && sucursal.productos) {
+          sucursal.productos.push(producto);
         }
       });
     },
@@ -160,6 +162,8 @@ const EmpresaReducer = createSlice({
         );
 
         if (sucursal && sucursal.productos) {
+          console.log("entre");
+
           const productoIndex = sucursal.productos.findIndex(
             (prod) => prod.id === producto.id
           );

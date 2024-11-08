@@ -67,7 +67,7 @@ export const ModificarSubcategoria: FC<IModificarSubcategoria> = ({
   return (
     <div className="modalCategoria">
       <form onSubmit={onSubmit}>
-        <h1>Crear Subcategoria</h1>
+        <h1>Modificar Subcategoria</h1>
         <input
           type="text"
           placeholder="Ingrese una denominacion"

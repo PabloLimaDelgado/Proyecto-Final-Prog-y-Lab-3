@@ -1,10 +1,11 @@
 import { CardSucursal } from "../CardSucursal/CardSucursal.tsx";
-import "./PageSucursal.css";
 import { IEmpresa } from "../../../types/dtos/empresa/IEmpresa.ts";
 import { FC, useState } from "react";
 import { useAppSelector } from "../../../hooks/redux.ts";
 import { ICreateSucursal } from "../../../types/dtos/sucursal/ICreateSucursal";
 import { CrearSucursal } from "../forms/Sucursal/CrearSucursal/CrearSucursal.tsx";
+
+import "./PageSucursal.css"
 
 interface ISucursalList {
   empresa: IEmpresa;

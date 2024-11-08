@@ -1,33 +1,37 @@
 {
     "_type": "export",
     "__export_format": 4,
-    "__export_date": "2024-10-22T13:12:59.035Z",
-    "__export_source": "insomnia.desktop.app:v10.1.0",
+    "__export_date": "2024-11-02T14:10:14.017Z",
+    "__export_source": "insomnia.desktop.app:v10.1.1",
     "resources": [
         {
-            "_id": "req_da696094a75647be9ef94c691e5cf07c",
+            "_id": "req_ea4ffbedd1fb412ba75f5de5bec3a4c3",
             "parentId": "fld_27281095aa6b4eda90fb99717638d53a",
-            "modified": 1729602231278,
-            "created": 1729602173971,
-            "url": "http://190.221.207.224:8090/images/deleteImg",
-            "name": "DeleteimgCloudinary",
+            "modified": 1730556370662,
+            "created": 1730555733346,
+            "url": "http://190.221.207.224:8090/images/articulos/deleteImg",
+            "name": "DeleteImgIArticulo",
             "description": "",
             "method": "POST",
             "body": {},
             "parameters": [
                 {
+                    "name": "id",
+                    "value": "1"
+                },
+                {
                     "name": "publicId",
-                    "value": "idimage"
+                    "value": "idPublico"
                 }
             ],
             "headers": [
                 {
                     "name": "User-Agent",
-                    "value": "insomnia/10.1.0"
+                    "value": "insomnia/10.1.1"
                 }
             ],
             "authentication": {},
-            "metaSortKey": -1729602173971,
+            "metaSortKey": -1730555733346,
             "isPrivate": false,
             "pathParameters": [],
             "settingStoreCookies": true,
@@ -59,6 +63,78 @@
             "description": "",
             "scope": "collection",
             "_type": "workspace"
+        },
+        {
+            "_id": "req_ce2e64d16d844675a0a460d9499d2689",
+            "parentId": "fld_27281095aa6b4eda90fb99717638d53a",
+            "modified": 1730556382286,
+            "created": 1730556376671,
+            "url": "http://190.221.207.224:8090/images/alergenos/deleteImg",
+            "name": "DeleteImgIAlergeno",
+            "description": "",
+            "method": "POST",
+            "body": {},
+            "parameters": [
+                {
+                    "name": "id",
+                    "value": "1"
+                },
+                {
+                    "name": "publicId",
+                    "value": "idPublico"
+                }
+            ],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.1.1"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1730078953658.5,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_da696094a75647be9ef94c691e5cf07c",
+            "parentId": "fld_27281095aa6b4eda90fb99717638d53a",
+            "modified": 1730555811780,
+            "created": 1729602173971,
+            "url": "http://190.221.207.224:8090/images/deleteImg",
+            "name": "DeleteimgCloudinary",
+            "description": "",
+            "method": "POST",
+            "body": {},
+            "parameters": [
+                {
+                    "name": "publicId",
+                    "value": "idimage"
+                }
+            ],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.1.0"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1729602173971,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
         },
         {
             "_id": "req_fb7127372c904fa089a6eed3989e1956",
@@ -651,7 +727,7 @@
         {
             "_id": "req_645032d765da440bad8b3cf9f5716cb0",
             "parentId": "fld_97b935821a214b95870e0b9cb4436081",
-            "modified": 1729532685700,
+            "modified": 1730556051969,
             "created": 1721742603008,
             "url": "http://190.221.207.224:8090/alergenos/1",
             "name": "EditAlergeno",
@@ -659,7 +735,7 @@
             "method": "PUT",
             "body": {
                 "mimeType": "application/json",
-                "text": "{\n\t\"id\": 1,\n\t\"eliminado\": false,\n\t\"denominacion\": \"Mani\",\n\t\"imagen\": null\n}"
+                "text": "{\n\t\"id\": 1,\n\t\"eliminado\": false,\n\t\"denominacion\": \"Mani\",\n\t\"imagen\":{\n    \"url\": \"https://res.cloudinary.com/dele6jamp/image/upload/hxle72jlvoy2na3bn4g1\",\n    \"name\": \"images.png\"\n}\n}"
             },
             "parameters": [],
             "headers": [
@@ -674,6 +750,76 @@
             ],
             "authentication": {},
             "metaSortKey": -1721742603008,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "req_ea373fc5194b464081bb1a1328399920",
+            "parentId": "fld_73a496f2960d4d198d2da05bd43cdd65",
+            "modified": 1730556524135,
+            "created": 1721607006655,
+            "url": "http://190.221.207.224:8090/categorias/allCategoriasPorSucursal/1",
+            "name": "GetCategoriasPadrePorSucursal",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/9.3.2"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1730556398625,
+            "isPrivate": false,
+            "pathParameters": [],
+            "settingStoreCookies": true,
+            "settingSendCookies": true,
+            "settingDisableRenderRequestBody": false,
+            "settingEncodeUrl": true,
+            "settingRebuildPath": true,
+            "settingFollowRedirects": "global",
+            "_type": "request"
+        },
+        {
+            "_id": "fld_73a496f2960d4d198d2da05bd43cdd65",
+            "parentId": "wrk_d9b25c213ade4f16b304cc37a35247bb",
+            "modified": 1721607002654,
+            "created": 1721607002654,
+            "name": "Categoria",
+            "description": "",
+            "environment": {},
+            "environmentPropertyOrder": null,
+            "metaSortKey": -1721607002654,
+            "_type": "request_group"
+        },
+        {
+            "_id": "req_e678f167f2744e46ba9fc01e66b973e0",
+            "parentId": "fld_73a496f2960d4d198d2da05bd43cdd65",
+            "modified": 1730556467007,
+            "created": 1730556398525,
+            "url": "http://190.221.207.224:8090/categorias/allSubCategoriasPorCategoriaPadre/1/1",
+            "name": "GetAllSubcategoriesByIDCategoriaPadre",
+            "description": "",
+            "method": "GET",
+            "body": {},
+            "parameters": [],
+            "headers": [
+                {
+                    "name": "User-Agent",
+                    "value": "insomnia/10.1.1"
+                }
+            ],
+            "authentication": {},
+            "metaSortKey": -1730556398525,
             "isPrivate": false,
             "pathParameters": [],
             "settingStoreCookies": true,
@@ -714,18 +860,6 @@
             "_type": "request"
         },
         {
-            "_id": "fld_73a496f2960d4d198d2da05bd43cdd65",
-            "parentId": "wrk_d9b25c213ade4f16b304cc37a35247bb",
-            "modified": 1721607002654,
-            "created": 1721607002654,
-            "name": "Categoria",
-            "description": "",
-            "environment": {},
-            "environmentPropertyOrder": null,
-            "metaSortKey": -1721607002654,
-            "_type": "request_group"
-        },
-        {
             "_id": "req_3274489bc8f847789706fa3313d92678",
             "parentId": "fld_73a496f2960d4d198d2da05bd43cdd65",
             "modified": 1729536118820,
@@ -744,35 +878,6 @@
             ],
             "authentication": {},
             "metaSortKey": -1721613616848,
-            "isPrivate": false,
-            "pathParameters": [],
-            "settingStoreCookies": true,
-            "settingSendCookies": true,
-            "settingDisableRenderRequestBody": false,
-            "settingEncodeUrl": true,
-            "settingRebuildPath": true,
-            "settingFollowRedirects": "global",
-            "_type": "request"
-        },
-        {
-            "_id": "req_ea373fc5194b464081bb1a1328399920",
-            "parentId": "fld_73a496f2960d4d198d2da05bd43cdd65",
-            "modified": 1729536120376,
-            "created": 1721607006655,
-            "url": "http://190.221.207.224:8090/categorias/allCategoriasPorSucursal/1",
-            "name": "GetCategoriasPorSucursal",
-            "description": "",
-            "method": "GET",
-            "body": {},
-            "parameters": [],
-            "headers": [
-                {
-                    "name": "User-Agent",
-                    "value": "insomnia/9.3.2"
-                }
-            ],
-            "authentication": {},
-            "metaSortKey": -1721612270339.5,
             "isPrivate": false,
             "pathParameters": [],
             "settingStoreCookies": true,
@@ -1041,7 +1146,7 @@
         {
             "_id": "req_91de455c1b7f4115bfd9da3fa41016e3",
             "parentId": "fld_ee4d51282a0a4703a29d83affb714484",
-            "modified": 1729536144665,
+            "modified": 1730229631237,
             "created": 1721588802585,
             "url": "http://190.221.207.224:8090/empresas",
             "name": "GetAllEmpresas",

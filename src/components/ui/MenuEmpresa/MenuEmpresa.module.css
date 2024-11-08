@@ -17,15 +17,15 @@
 }
 
 .empresaScrollbar::-webkit-scrollbar-track {
-  background: #e0e0e0;
+  background: white;
   border-radius: 0.4rem;
   border: 1px solid #1c1c1c;
 }
 
 .empresaScrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(125, 140, 147, 1);
+  background-color: black;
   border-radius: 0.4rem;
-  border: 1px solid #1c1c1c;
+  border: 1px solid black;
 }
 
 .empresaScrollbar::-webkit-scrollbar-thumb:hover {
@@ -47,13 +47,13 @@
 }
 
 .cardEmpresaSucursales::-webkit-scrollbar-track {
-  background: rgba(125, 140, 147, 1);
+  background: white;
   border-radius: 0.4rem;
   border: 1px solid #1c1c1c;
 }
 
 .cardEmpresaSucursales::-webkit-scrollbar-thumb {
-  background-color: #e0e0e0;
+  background-color: black;
   border-radius: 0.4rem;
   border: 1px solid #1c1c1c;
 }
