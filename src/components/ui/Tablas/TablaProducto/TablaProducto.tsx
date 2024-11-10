@@ -1,19 +1,15 @@
-import { FC, useEffect, useState } from "react";
-import "./TablaProducto.css";
-import { ICreateProducto } from "../../../../types/dtos/productos/ICreateProducto.ts";
-import { CrearProducto } from "../../forms/Producto/CrearProducto/CrearProducto.tsx";
+import { FC, useState } from "react";
 import { ISucursal } from "../../../../types/dtos/sucursal/ISucursal.ts";
 import { IProductos } from "../../../../types/dtos/productos/IProductos.ts";
-import { ModificarProducto } from "../../forms/Producto/ModificarProducto/ModificarProducto.tsx";
-import { VerProducto } from "../../forms/Producto/VerProducto/VerProducto.tsx";
+import { ICreateProducto } from "../../../../types/dtos/productos/ICreateProducto.ts";
 import { EliminarProducto } from "../../forms/Producto/EliminarProducto/EliminarProducto.tsx";
-import { useFetch } from "../../../../hooks/useFetch.ts";
-import { useSelector } from "react-redux";
-import { RootState } from "@reduxjs/toolkit/query";
-import { useAppSelector } from "../../../../hooks/redux.ts";
+import { VerProducto } from "../../forms/Producto/VerProducto/VerProducto.tsx";
+import { ModificarProducto } from "../../forms/Producto/ModificarProducto/ModificarProducto.tsx";
+import { CrearProducto } from "../../forms/Producto/CrearProducto/CrearProducto.tsx";
 
+import "./TablaProducto.css";
 interface ITablaProducto {
-  sucursal?: ISucursal;
+  sucursal: ISucursal;
 }
 
 export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
@@ -23,15 +19,8 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
   const [modificarProducto, setModificarProducto] = useState<boolean>(false);
   const [verProducto, setVerProducto] = useState<boolean>(false);
   const [eliminarProducto, setEliminarProducto] = useState<boolean>(false);
+  const [paginaActual, setPaginaActual] = useState<number>(0);
 
-  const productosSucursal = useAppSelector((state) =>
-    state.empresaReducer.empresa
-      .find((emp) => emp.id === sucursal?.empresa.id)
-      ?.sucursales.find((sucur) => sucur.id === sucursal?.id)
-  );
-
-  console.log(productosSucursal);
-  
   const handleCrearProducto = () => {
     setCrearProducto(!crearProducto);
   };
@@ -51,6 +40,19 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
     setProductoSeleccionado(producto);
   };
 
+  const productosPorPagina = 5;
+  const totalPaginas = Math.ceil(
+    (sucursal.productos?.length || 0) / productosPorPagina
+  );
+
+  const handlePaginaAnterior = () => {
+    setPaginaActual((prev) => Math.max(prev - 1, 0));
+  };
+
+  const handlePaginaSiguiente = () => {
+    setPaginaActual((prev) => Math.min(prev + 1, totalPaginas - 1));
+  };
+
   const initialForm: ICreateProducto = {
     denominacion: "",
     precioVenta: 0,
@@ -62,36 +64,13 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
     imagenes: [],
   };
 
-  const [paginaActual, setPaginaActual] = useState(0);
-  const [totalPaginas, setTotalPaginas] = useState(0);
-  const itemsPorPagina = 5;
+  const productosPagina =
+    sucursal.productos?.slice(
+      paginaActual * productosPorPagina,
+      (paginaActual + 1) * productosPorPagina
+    ) || [];
 
-  const { data } = useFetch<any>(
-    `http://190.221.207.224:8090/articulos/pagedPorSucursal/${sucursal?.id}?page=${paginaActual}&size=${itemsPorPagina}`
-  );
-
-  const { data: produtos } = useFetch<IProductos[]>(
-    `http://190.221.207.224:8090/articulos/porSucursal/${sucursal?.id}`
-  );
-
-  useEffect(() => {
-    if (data) {
-      setTotalPaginas(data.totalPages);
-    }
-  }, [data, produtos, sucursal]);
-
-  const handlePaginaSiguiente = () => {
-    if (paginaActual < totalPaginas) {
-      setPaginaActual(paginaActual + 1);
-    }
-  };
-
-  const handlePaginaAnterior = () => {
-    if (paginaActual > 0) {
-      console.log("entre");
-      setPaginaActual(paginaActual - 1);
-    }
-  };
+  console.log(productosPagina);
 
   return (
     <>
@@ -108,144 +87,45 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
             </tr>
           </thead>
           <tbody>
-            {data &&
-            data.content &&
-            data.content.length > 0 &&
-            sucursal?.productos
-              ? data.content.map((producto: IProductos) => {
-                  const { productos = [] } = sucursal;
-
-                  const productoSucursal = productos.find(
-                    (prod) => prod.id === producto.id
-                  );
-
-                  return (
-                    <tr key={producto.id}>
-                      <td>{productoSucursal?.denominacion}</td>
-                      <td>{productoSucursal?.precioVenta}</td>
-                      <td>
-                        <div className="descripcion">
-                          {productoSucursal?.descripcion}
-                        </div>
-                      </td>
-                      {/* Usa categoriaProducto aquí */}
-                      <td>{producto.categoria.denominacion}</td>
-                      <td>{productoSucursal?.habilitado ? "Sí" : "No"}</td>
-                      <td>
-                        <div className="buttonsAlergeno">
-                          <button
-                            className="visibility"
-                            onClick={() =>
-                              handleVerProducto(
-                                productoSucursal ? productoSucursal : producto
-                              )
-                            }
-                          >
-                            <span className="material-symbols-outlined">
-                              visibility
-                            </span>
-                          </button>
-                          <button
-                            className="edit"
-                            onClick={() =>
-                              handleModificarProducto(
-                                productoSucursal ? productoSucursal : producto
-                              )
-                            }
-                          >
-                            <span className="material-symbols-outlined">
-                              edit
-                            </span>
-                          </button>
-                          <button
-                            className="delete"
-                            onClick={() =>
-                              handleEliminarProducto(
-                                productoSucursal ? productoSucursal : producto
-                              )
-                            }
-                          >
-                            <span className="material-symbols-outlined">
-                              delete
-                            </span>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })
-              : sucursal && //PORQUE NO ME RENDERIZA ACA EL PRUDCTO AÑADIDO EN LA SUCURSAL EL REDUX
-                totalPaginas == 0 &&
-                productosSucursal?.productos?.map((produtoSinPafina) => {
-                  const { productos = [] } = sucursal;
-                  const productoSucursal = productos.find(
-                    (prod) => prod.id === produtoSinPafina.id
-                  );
-
-                  return (
-                    <tr key={produtoSinPafina.id}>
-                      <td>{produtoSinPafina?.denominacion}</td>
-                      <td>{produtoSinPafina?.precioVenta}</td>
-                      <td>
-                        <div className="descripcion">
-                          {productoSucursal?.descripcion}
-                        </div>
-                      </td>
-                      <td>{produtoSinPafina?.categoria?.denominacion}</td>
-                      <td>{produtoSinPafina?.habilitado ? "Sí" : "No"}</td>
-                      <td>
-                        <div className="buttonsAlergeno">
-                          <button
-                            className="visibility"
-                            onClick={() =>
-                              handleVerProducto(
-                                productoSucursal || produtoSinPafina
-                              )
-                            }
-                          >
-                            <span className="material-symbols-outlined">
-                              visibility
-                            </span>
-                          </button>
-                          <button
-                            className="edit"
-                            onClick={() =>
-                              handleModificarProducto(
-                                productoSucursal || produtoSinPafina
-                              )
-                            }
-                          >
-                            <span className="material-symbols-outlined">
-                              edit
-                            </span>
-                          </button>
-                          <button
-                            className="delete"
-                            onClick={() =>
-                              handleEliminarProducto(
-                                productoSucursal || produtoSinPafina
-                              )
-                            }
-                          >
-                            <span className="material-symbols-outlined">
-                              delete
-                            </span>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })}
-            {totalPaginas === 0 && (
-              <tr className="agregarProducto">
-                <td colSpan={6}>
-                  <button onClick={handleCrearProducto}>
-                    AGREGAR PRODUCTO
-                  </button>
-                </td>
-              </tr>
-            )}
-            {data && data.content && paginaActual === totalPaginas - 1 && (
+            {sucursal &&
+              sucursal.productos &&
+              sucursal.productos?.length >= 5 &&
+              productosPagina.map((producto) => (
+                <tr key={producto.id}>
+                  <td>{producto.denominacion}</td>
+                  <td>{producto.precioVenta}</td>
+                  <td className="descripcion">{producto.descripcion}</td>
+                  <td>{producto.categoria.denominacion}</td>
+                  <td>{producto.habilitado ? "Si" : "No"}</td>
+                  <td>
+                    <div className="buttonsAlergeno">
+                      <button
+                        className="visibility"
+                        onClick={() => handleVerProducto(producto)}
+                      >
+                        <span className="material-symbols-outlined">
+                          visibility
+                        </span>
+                      </button>
+                      <button
+                        className="edit"
+                        onClick={() => handleModificarProducto(producto)}
+                      >
+                        <span className="material-symbols-outlined">edit</span>
+                      </button>
+                      <button
+                        className="delete"
+                        onClick={() => handleEliminarProducto(producto)}
+                      >
+                        <span className="material-symbols-outlined">
+                          delete
+                        </span>
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            {totalPaginas === paginaActual+1 && (
               <tr className="agregarProducto">
                 <td colSpan={6}>
                   <button onClick={handleCrearProducto}>
@@ -256,6 +136,7 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
             )}
           </tbody>
         </table>
+
         <div className="pagination">
           <button onClick={handlePaginaAnterior} disabled={paginaActual === 0}>
             Anterior
