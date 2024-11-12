@@ -1,0 +1,45 @@
+.menuContainer {
+  width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  flex-direction: column;
+  border-right: 0.1rem solid #1c1c1c;
+  background:#153B50;
+}
+
+.menuContainer ul {
+  margin: 0.4rem;
+  list-style: none;
+}
+
+.menuContainer ul li {
+  margin: 1rem;
+}
+
+.menuContainer ul li button {
+  background-color: transparent;
+  border-radius: 0.4rem;
+  border: solid 1px #e0e0e0;
+  padding: 0.4rem;
+  width: 12vw;
+  color: white;
+}
+
+.Categorias {
+  background: #153B50;
+  background-size: contain;
+}
+
+.Productos {
+  background:#153B50
+}
+
+.Alergenos {
+  background: #153B50
+}
+
+.buttonSeleccionado {
+  background-color: #e0e0e0 !important;
+  color: black !important;
+}

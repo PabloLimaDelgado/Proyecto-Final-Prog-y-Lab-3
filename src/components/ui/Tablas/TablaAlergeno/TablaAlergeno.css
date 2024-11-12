@@ -1,0 +1,111 @@
+.tableAlergeno {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.tableAlergeno table {
+  height: 70vh;
+  width: 60vw;
+  background-color: #2c3e4f;
+  box-shadow: 0px 0px 10px 4px #2c3e4f;
+  border: 1px solid #1c1c1c;
+  display: flex;
+  flex-direction: column;
+}
+
+.tableAlergeno table thead {
+  border-bottom: 1px solid #1c1c1c;
+  position: fixed;
+  width: 60vw;
+  z-index: 1;
+  background-color: #e0e0e0;
+}
+
+.tableAlergeno table tbody {
+  margin-top: 2.5rem;
+  overflow-y: auto;
+}
+.tableAlergeno table thead tr {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.tableAlergeno table thead tr th {
+  padding: 0.4rem;
+  color: #1c1c1c;
+  font-family: "Moulpali", sans-serif;
+  font-size: 1.3rem;
+  text-align: center;
+  font-weight: lighter;
+}
+
+.tableAlergeno table tbody tr {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.tableAlergeno table tbody tr td {
+  padding: 1rem;
+  color: white;
+  font-family: "Moulpali", sans-serif;
+  font-size: 1.2rem;
+  font-weight: lighter;
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  justify-content: center;
+}
+
+.buttonsAlergeno {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.buttonsAlergeno button {
+  display: flex;
+}
+
+.agregarAlergeno {
+  display: grid;
+  grid-template-columns: 1fr !important;
+  border-top: 1px solid white;
+}
+
+.agregarAlergeno td button {
+  display: flex;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  border: 1px solid #1c1c1c;
+  background-color: #e0e0e0;
+  font-family: "Roboto", sans-serif;
+}
+
+.pAlergenosContainer span {
+  cursor: pointer;
+}
+
+.tableAlergeno table tbody::-webkit-scrollbar {
+  width: 12px;
+}
+
+.tableAlergeno table tbody::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 0.4rem;
+  border: 1px solid #1c1c1c;
+}
+
+.tableAlergeno table tbody::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 0.4rem;
+  border: 1px solid black;
+}
+
+.tableAlergeno table tbody::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}

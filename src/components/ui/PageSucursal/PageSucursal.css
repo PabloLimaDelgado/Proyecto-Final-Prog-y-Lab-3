@@ -1,0 +1,61 @@
+.cardSucursalSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  background-color: white;
+  height: auto !important;
+  z-index: 1;
+}
+
+.cardSucursalSide h1 {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  color: #1c1c1c;
+  margin: 1rem;
+  font-size: 2rem;
+}
+
+.cartaSucursalContainer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cardSucursalButton {
+  display: flex;
+  width: 18vw;
+  height: 40vh;
+  flex-direction: column;
+  border: 1px solid rgba(21, 59, 80, 1);
+  margin: 0.4rem;
+  align-items: center;
+  border-radius: 5px;
+  justify-self: center;
+}
+
+.cardSucursalButton button span {
+  border: 1px solid rgba(21, 59, 80, 1);
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+}
+
+.cardSucursalButton button h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgba(21, 59, 80, 1);
+}
+
+.cardSucursalButton button {
+  width: 18vw;
+  height: 45vh;
+  cursor: auto;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  flex-direction: column;
+  color: rgba(21, 59, 80, 1);
+}

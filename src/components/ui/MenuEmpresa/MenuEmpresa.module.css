@@ -1,0 +1,63 @@
+.menuEmpresa {
+  padding-top: 2%;
+  width: 20%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  background: #153B50;
+  border-right: #1c1c1c 2px solid;
+  color: white;
+  z-index: 3;
+
+}
+
+.empresaScrollbar::-webkit-scrollbar {
+  width: 12px;
+}
+
+.empresaScrollbar::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 0.4rem;
+  border: 1px solid #1c1c1c;
+}
+
+.empresaScrollbar::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 0.4rem;
+  border: 1px solid black;
+}
+
+.empresaScrollbar::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}
+
+.cardEmpresaSucursales {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  align-items: center;
+  background: rgb(255, 255, 255);
+
+  overflow-y: scroll;
+}
+
+.cardEmpresaSucursales::-webkit-scrollbar {
+  width: 12px;
+}
+
+.cardEmpresaSucursales::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 0.4rem;
+  border: 1px solid #1c1c1c;
+}
+
+.cardEmpresaSucursales::-webkit-scrollbar-thumb {
+  background-color: black;
+  border-radius: 0.4rem;
+  border: 1px solid #1c1c1c;
+}
+
+.cardEmpresaSucursales::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
+}

@@ -1,0 +1,89 @@
+.cardEmpresa {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 15% ;
+  padding-top:2vh ;
+  justify-content: space-around;
+  border-bottom: #1c1c1c 2px solid;
+  background-color: #153B50;
+
+}
+.cardEmpresaTitulo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.cardEmpresaTitulo .title .img{
+  height: 10vh;
+  width: 10vw;
+  overflow: hidden;
+}
+.cardEmpresaTitulo .img img{
+  height: 100%;
+  width: auto;
+  font-size: 0.5rem;
+}
+
+.cardEmpresaTitulo .title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 200;
+  color: white;
+  margin: 1rem;
+  font-size: 1.6rem;
+  min-width: 60%;
+  text-align: center;
+}
+
+.buttonsEmpresa {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+}
+
+.buttonsEmpresa button {
+  display: flex;
+}
+
+.cardEmpresaButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #1c1c1c;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+  box-shadow: inset 0px 0px 10px #1c1c1c;
+  background-color: #e0e0e0;
+  margin: 0.4rem;
+  height: 40vh;
+  width: 15vw;
+  justify-self: center;
+}
+
+.cardEmpresaButton button h2 {
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+}
+
+.cardEmpresaButton button {
+  height: 40vh;
+  width: 15vw;
+  cursor: auto;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  flex-direction: column;
+}
+
+.cardEmpresaButton button span {
+  border: 1px solid #1c1c1c;
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 0.4rem;
+}
