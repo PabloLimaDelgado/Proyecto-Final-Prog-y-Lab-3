@@ -46,7 +46,7 @@ export const ModificarProducto: FC<IModificarProducto> = ({
   useEffect(() => {
     if (sucursal?.id) {
       fetch(
-        `http://190.221.207.224:8090/categorias/allCategoriasPorSucursal/${sucursal.id}`
+        `http://190.221.207.224:8090/categorias/allSubCategoriasPorSucursal/${sucursal.id}`
       )
         .then((response: Response) => response.json())
         .then((data: ICategorias[]) => setCategorias(data))
@@ -138,7 +138,7 @@ export const ModificarProducto: FC<IModificarProducto> = ({
   return (
     <div className="modalProducto">
       <form onSubmit={onSubmit}>
-        <h1>Crear Producto</h1>
+        <h1>Modificar Producto</h1>
         <div>
           <div className="grids">
             <div>
@@ -171,31 +171,15 @@ export const ModificarProducto: FC<IModificarProducto> = ({
                   className="material-symbols-outlined"
                   onClick={() => setShowAlergenos((prev) => !prev)}
                 >
-                  arrow_drop_down
+                  add
                 </span>
               </div>
 
-              {showAlergenos && (
-                <div className="divAlergenos">
-                  {alergenos.map((alergeno) => (
-                    <div key={alergeno.id} className="divInputs">
-                      <input
-                        type="checkbox"
-                        value={alergeno.id}
-                        onChange={handleAlergenosChange}
-                        checked={formState.idAlergenos.includes(alergeno.id)}
-                      />
-                      <p>{alergeno.denominacion}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-
               <input
-                type="text"
+                type="number"
                 placeholder="Ingrese un precio de venta"
                 name="precioVenta"
-                value={formState.precioVenta}
+                value={formState.precioVenta ? formState.precioVenta : ""}
                 onChange={onInputChange}
               />
               <input
@@ -256,6 +240,30 @@ export const ModificarProducto: FC<IModificarProducto> = ({
             ACEPTAR
           </button>
         </div>
+
+        {showAlergenos && (
+          <div className="divAlergenos">
+            {alergenos.map((alergeno) => (
+              <div key={alergeno.id} className="divInputs">
+                <input
+                  type="checkbox"
+                  value={alergeno.id}
+                  className="inputAlergeno"
+                  onChange={handleAlergenosChange}
+                  checked={formState.idAlergenos.includes(alergeno.id)}
+                />
+                <p>{alergeno.denominacion}</p>
+              </div>
+            ))}
+
+            <button
+              className="buttonCerrarAlergenos"
+              onClick={() => setShowAlergenos((prev) => !prev)}
+            >
+              Cerrar
+            </button>
+          </div>
+        )}
       </form>
     </div>
   );

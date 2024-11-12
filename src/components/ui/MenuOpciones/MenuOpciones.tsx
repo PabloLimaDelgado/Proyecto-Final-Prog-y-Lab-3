@@ -25,7 +25,7 @@ export const MenuOpciones: FC<IMenuOpciones> = ({ sucursal, empresa }) => {
             ? "Productos menuContainer"
             : selectedButton === "Alergenos"
             ? "Alergenos menuContainer"
-            : "menuContainer"
+            : "Categorias menuContainer"
         }
       >
         <ul>
@@ -65,11 +65,11 @@ export const MenuOpciones: FC<IMenuOpciones> = ({ sucursal, empresa }) => {
       {selectedButton === "Alergenos" ? (
         <TablaAlergeno empresa={empresa} sucursal={sucursal} />
       ) : selectedButton === "Productos" ? (
-        <TablaProducto sucursal={sucursal} />
+        sucursal && <TablaProducto sucursal={sucursal} />
       ) : selectedButton == "Categorias" ? (
         <TablaCategorias sucursal={sucursal} />
       ) : (
-        <></>
+        <TablaCategorias sucursal={sucursal} />
       )}
     </>
   );

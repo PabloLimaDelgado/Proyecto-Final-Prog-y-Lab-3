@@ -8,7 +8,7 @@ import { IProductos } from "../../../../../types/dtos/productos/IProductos.ts";
 import { useDispatch } from "react-redux";
 import { setAgregarProducto } from "../../../../../redux/slices/EmpresaReducer.ts";
 
-import "../Producto.css"
+import "../Producto.css";
 
 interface ITablaProducto {
   sucursal?: ISucursal;
@@ -33,7 +33,7 @@ export const CrearProducto: FC<ITablaProducto> = ({
   useEffect(() => {
     if (sucursal?.id) {
       fetch(
-        `http://190.221.207.224:8090/categorias/allCategoriasPorSucursal/${sucursal.id}`
+        `http://190.221.207.224:8090/categorias/allSubCategoriasPorSucursal/${sucursal.id}`
       )
         .then((response: Response) => response.json())
         .then((data: ICategorias[]) => setCategorias(data))
@@ -108,9 +108,9 @@ export const CrearProducto: FC<ITablaProducto> = ({
 
       if (sucursal?.id) {
         console.log("entre");
-        
+
         console.log(data);
-        
+
         dispatch(
           setAgregarProducto({
             producto: data,
@@ -155,37 +155,19 @@ export const CrearProducto: FC<ITablaProducto> = ({
                   ))}
               </select>
 
-              <div className="pAlergenosContainer">
+              <div
+                className="pAlergenosContainer"
+                onClick={() => setShowAlergenos((prev) => !prev)}
+              >
                 <p className="pAlergenos">Seleccione los alergenos</p>
-                <span
-                  className="material-symbols-outlined"
-                  onClick={() => setShowAlergenos((prev) => !prev)}
-                >
-                  arrow_drop_down
-                </span>
+                <span className="material-symbols-outlined">add</span>
               </div>
 
-              {showAlergenos && (
-                <div className="divAlergenos">
-                  {alergenos.map((alergeno) => (
-                    <div key={alergeno.id} className="divInputs">
-                      <input
-                        type="checkbox"
-                        value={alergeno.id}
-                        onChange={handleAlergenosChange}
-                        checked={formState.idAlergenos.includes(alergeno.id)}
-                      />
-                      <p>{alergeno.denominacion}</p>
-                    </div>
-                  ))}
-                </div>
-              )}
-
               <input
-                type="text"
+                type="number"
                 placeholder="Ingrese un precio de venta"
                 name="precioVenta"
-                value={formState.precioVenta}
+                value={formState.precioVenta ? formState.precioVenta : ""}
                 onChange={onInputChange}
               />
               <input
@@ -246,6 +228,30 @@ export const CrearProducto: FC<ITablaProducto> = ({
             ACEPTAR
           </button>
         </div>
+
+        {showAlergenos && (
+          <div className="divAlergenos">
+            {alergenos.map((alergeno) => (
+              <div key={alergeno.id} className="divInputs">
+                <input
+                  type="checkbox"
+                  value={alergeno.id}
+                  className="inputAlergeno"
+                  onChange={handleAlergenosChange}
+                  checked={formState.idAlergenos.includes(alergeno.id)}
+                />
+                <p>{alergeno.denominacion}</p>
+              </div>
+            ))}
+
+            <button
+              className="buttonCerrarAlergenos"
+              onClick={() => setShowAlergenos((prev) => !prev)}
+            >
+              Cerrar
+            </button>
+          </div>
+        )}
       </form>
     </div>
   );

@@ -89,7 +89,6 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
           <tbody>
             {sucursal &&
               sucursal.productos &&
-              sucursal.productos?.length >= 5 &&
               productosPagina.map((producto) => (
                 <tr key={producto.id}>
                   <td>{producto.denominacion}</td>
@@ -125,7 +124,7 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
                   </td>
                 </tr>
               ))}
-            {totalPaginas === paginaActual+1 && (
+            {totalPaginas === paginaActual + 1 && (
               <tr className="agregarProducto">
                 <td colSpan={6}>
                   <button onClick={handleCrearProducto}>

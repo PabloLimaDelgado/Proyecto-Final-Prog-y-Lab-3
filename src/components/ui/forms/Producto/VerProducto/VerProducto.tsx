@@ -40,9 +40,11 @@ export const VerProducto: FC<IVerProducto> = ({
             <div className="infoColumn">
               <div className="alergenos">
                 <span>Alergenos: </span>
-                {producto.alergenos.map((alergeno) => (
-                  <p key={alergeno.id}> - {alergeno.denominacion}</p>
-                ))}
+                <p>
+                  {producto.alergenos
+                    .map((alergeno) => alergeno.denominacion)
+                    .join(" - ")}
+                </p>
               </div>
               <div className="divImagenAlergeno">
                 <span>Imagen: </span>
