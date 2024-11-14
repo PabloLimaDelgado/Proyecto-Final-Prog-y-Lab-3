@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ISucursal } from "../../../../types/dtos/sucursal/ISucursal.ts";
 import { IProductos } from "../../../../types/dtos/productos/IProductos.ts";
 import { ICreateProducto } from "../../../../types/dtos/productos/ICreateProducto.ts";
@@ -8,6 +8,7 @@ import { ModificarProducto } from "../../forms/Producto/ModificarProducto/Modifi
 import { CrearProducto } from "../../forms/Producto/CrearProducto/CrearProducto.tsx";
 
 import "./TablaProducto.css";
+import { useFetch } from "../../../../hooks/useFetch.ts";
 interface ITablaProducto {
   sucursal: ISucursal;
 }
@@ -40,10 +41,31 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
     setProductoSeleccionado(producto);
   };
 
-  const productosPorPagina = 6;
+  const productosPorPagina = 4;
+
   const totalPaginas = Math.ceil(
     (sucursal.productos?.length || 0) / productosPorPagina
   );
+
+  const [productos, setProductos] = useState<IProductos[]>([]);
+
+  const fetchProductos = async () => {
+    try {
+      const response = await fetch(
+        `http://190.221.207.224:8090/articulos/pagedPorSucursal/${sucursal.id}?page=${paginaActual}&size=${productosPorPagina}`
+      );
+      const data = await response.json();
+      if (data && data.content) {
+        setProductos(data.content);
+      }
+    } catch (error) {
+      console.error("Error fetching productos:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProductos();
+  }, [paginaActual, modificarProducto, eliminarProducto, crearProducto]);
 
   const handlePaginaAnterior = () => {
     setPaginaActual((prev) => Math.max(prev - 1, 0));
@@ -85,45 +107,41 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
             </tr>
           </thead>
           <tbody>
-            {sucursal &&
-              sucursal.productos &&
-              productosPagina.map((producto) => (
-                <tr key={producto.id}>
-                  <td>{producto.denominacion}</td>
-                  <td>{producto.precioVenta}</td>
-                  <td className="descripcion">
-                    <span>{producto.descripcion}</span>
-                  </td>
-                  <td>{producto.categoria.denominacion}</td>
-                  <td>{producto.habilitado ? "Si" : "No"}</td>
-                  <td>
-                    <div className="buttonsAlergeno">
-                      <button
-                        className="visibility"
-                        onClick={() => handleVerProducto(producto)}
-                      >
-                        <span className="material-symbols-outlined">
-                          visibility
-                        </span>
-                      </button>
-                      <button
-                        className="edit"
-                        onClick={() => handleModificarProducto(producto)}
-                      >
-                        <span className="material-symbols-outlined">edit</span>
-                      </button>
-                      <button
-                        className="delete"
-                        onClick={() => handleEliminarProducto(producto)}
-                      >
-                        <span className="material-symbols-outlined">
-                          delete
-                        </span>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+            {productos.map((producto: IProductos) => (
+              <tr key={producto.id}>
+                <td>{producto.denominacion}</td>
+                <td>{producto.precioVenta}</td>
+                <td className="descripcion">
+                  <span>{producto.descripcion}</span>
+                </td>
+                <td>{producto.categoria.denominacion}</td>
+                <td>{producto.habilitado ? "Si" : "No"}</td>
+                <td>
+                  <div className="buttonsAlergeno">
+                    <button
+                      className="visibility"
+                      onClick={() => handleVerProducto(producto)}
+                    >
+                      <span className="material-symbols-outlined">
+                        visibility
+                      </span>
+                    </button>
+                    <button
+                      className="edit"
+                      onClick={() => handleModificarProducto(producto)}
+                    >
+                      <span className="material-symbols-outlined">edit</span>
+                    </button>
+                    <button
+                      className="delete"
+                      onClick={() => handleEliminarProducto(producto)}
+                    >
+                      <span className="material-symbols-outlined">delete</span>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            ))}
             {totalPaginas === paginaActual + 1 && (
               <tr className="agregarProducto">
                 <td colSpan={6}>
