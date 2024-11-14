@@ -102,17 +102,20 @@ export const ModificarProducto: FC<IModificarProducto> = ({
         descripcion: formState.descripcion,
         habilitado: formState.habilitado,
         imagenes: formState.imagenes,
-        codigo: formState.codigo,
+        codigo: String(Math.random() * 1000),
         idCategoria: formState.idCategoria,
         idAlergenos: formState.idAlergenos,
       };
 
+      console.log("Producto a enviar:", JSON.stringify(producto, null, 2));
+
       const response: Response = await fetch(
-        `http://190.221.207.224:8090/articulos/update/${initialForm.id}`,
+        `http://190.221.207.224:8090/articulos/update/${producto.id}`,
         {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
+            "User-Agent": "insomnia/9.3.2",
           },
           body: JSON.stringify(producto), // Solo envía formState
         }
@@ -180,13 +183,6 @@ export const ModificarProducto: FC<IModificarProducto> = ({
                 placeholder="Ingrese un precio de venta"
                 name="precioVenta"
                 value={formState.precioVenta ? formState.precioVenta : ""}
-                onChange={onInputChange}
-              />
-              <input
-                type="text"
-                placeholder="Ingrese un codigo"
-                name="codigo"
-                value={formState.codigo}
                 onChange={onInputChange}
               />
 

@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { IAlergenos } from "../../../../types/dtos/alergenos/IAlergenos.ts";
+import { IAlergenos } from "../../../../../types/dtos/alergenos/IAlergenos.ts";
 import "./VerAlergeno.css";
 interface IVerAlergeno {
   alergeno: IAlergenos;

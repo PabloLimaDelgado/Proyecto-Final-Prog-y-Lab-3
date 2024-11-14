@@ -40,7 +40,7 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
     setProductoSeleccionado(producto);
   };
 
-  const productosPorPagina = 5;
+  const productosPorPagina = 6;
   const totalPaginas = Math.ceil(
     (sucursal.productos?.length || 0) / productosPorPagina
   );
@@ -70,8 +70,6 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
       (paginaActual + 1) * productosPorPagina
     ) || [];
 
-  console.log(productosPagina);
-
   return (
     <>
       <div className="tableProductos">
@@ -93,7 +91,9 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
                 <tr key={producto.id}>
                   <td>{producto.denominacion}</td>
                   <td>{producto.precioVenta}</td>
-                  <td className="descripcion">{producto.descripcion}</td>
+                  <td className="descripcion">
+                    <span>{producto.descripcion}</span>
+                  </td>
                   <td>{producto.categoria.denominacion}</td>
                   <td>{producto.habilitado ? "Si" : "No"}</td>
                   <td>
@@ -133,6 +133,16 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
                 </td>
               </tr>
             )}
+
+            {sucursal.productos?.length === 0 && (
+              <tr className="agregarProducto">
+                <td colSpan={6}>
+                  <button onClick={handleCrearProducto}>
+                    AGREGAR PRODUCTO
+                  </button>
+                </td>
+              </tr>
+            )}
           </tbody>
         </table>
 
@@ -143,7 +153,7 @@ export const TablaProducto: FC<ITablaProducto> = ({ sucursal }) => {
           <span>{`Página ${paginaActual + 1} de ${totalPaginas}`}</span>
           <button
             onClick={handlePaginaSiguiente}
-            disabled={paginaActual === totalPaginas - 1}
+            disabled={paginaActual === totalPaginas}
           >
             Siguiente
           </button>

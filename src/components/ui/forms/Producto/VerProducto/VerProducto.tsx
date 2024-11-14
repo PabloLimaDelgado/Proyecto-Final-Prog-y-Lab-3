@@ -46,7 +46,7 @@ export const VerProducto: FC<IVerProducto> = ({
                     .join(" - ")}
                 </p>
               </div>
-              <div className="divImagenAlergeno">
+              <div className="divImagenProducto">
                 <span>Imagen: </span>
                 <div>
                   {producto.imagenes.map((imagenes) => (

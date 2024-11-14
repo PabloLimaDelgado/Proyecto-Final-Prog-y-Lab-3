@@ -8,13 +8,14 @@
 }
 
 .tableProductos table {
-  height: 70%;
+  height: 80%;
   width: 60vw;
   background-color: #2c3e4f;
   box-shadow: 0px 0px 10px 4px #2c3e4f;
   border: 1px solid #1c1c1c;
   display: flex;
   flex-direction: column;
+  margin-top: 0.4rem;
 }
 
 .tableProductos table thead {
@@ -87,13 +88,18 @@
   font-family: "Roboto", sans-serif;
 }
 
-.tableProductos table tbody tr td .descripcion {
-  white-space: nowrap;
-  overflow-x: auto;
-  max-width: 10rem;
-  max-height: 8vh;
-  min-width: 10rem;
-  overflow-y: hidden;
+.descripcion {
+  overflow-x: auto; /* Activa el scroll horizontal */
+  overflow-y: hidden; /* Desactiva el scroll vertical */
+  width: 100%; /* Ocupa el ancho total de la celda */
+  height: auto; /* Ajusta la altura automáticamente */
+  max-height: 10vh; /* Limita la altura máxima a 10vh */
+}
+
+.descripcion span{
+  white-space: nowrap; /* Evita el salto de línea */
+  width: 100%; /* Ocupa el ancho total de la celda */
+  text-align: center;
 }
 
 .pagination {
@@ -102,7 +108,7 @@
   align-items: center;
   gap: 1rem;
   margin-top: 1rem;
-  height: 20%;
+  height: 10%;
   color: #2c3e4f;
 }
 
@@ -141,7 +147,7 @@
 }
 
 .descripcion::-webkit-scrollbar {
-  width: 12px;
+  width: 8px; /* Altura de la barra de desplazamiento horizontal */
 }
 
 .descripcion::-webkit-scrollbar-track {
